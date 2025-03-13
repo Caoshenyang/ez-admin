@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: EZ-ADMIN
+server:
+  port: 2222
