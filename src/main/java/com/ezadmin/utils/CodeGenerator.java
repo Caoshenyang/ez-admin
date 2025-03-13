@@ -16,9 +16,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class CodeGenerator {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/itshare-dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false";
+    private static final String DB_URL = "jdbc:mysql://110.40.175.47:3306/ez-admin?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "root@123456";
 
     public static void main(String[] args) {
 
@@ -29,7 +29,7 @@ public class CodeGenerator {
         FastAutoGenerator.create(DB_URL, USERNAME, PASSWORD)
                 .globalConfig((scanner, builder) -> {
                     // 设置作者
-                    builder.author("曹申阳")
+                    builder.author("shenyang")
                             .disableOpenDir()
                             .enableSpringdoc() // 如果想用swagger，生成 springdoc 规范注解 把这个放开
                             // 指定输出目录
@@ -45,7 +45,7 @@ public class CodeGenerator {
                 )
                 .packageConfig((scanner, builder) -> {
                     loadModulePackageName.set(scanner.apply("请输入当前父包模块名称："));
-                    builder.parent("com.yang.itshare") // 设置父包名
+                    builder.parent("com.ezadmin.modules") // 设置父包名
                             .moduleName(loadModulePackageName.get()) // 设置父包模块名
                             .service("service")
                             .serviceImpl("service.impl")
@@ -58,12 +58,12 @@ public class CodeGenerator {
                 .strategyConfig((scanner, builder) -> {
                             // 设置需要生成的表名
                             builder.addInclude(getTables(scanner.apply("请输入表名，多个英文逗号分隔？所有输入 all")))
-                                    .addTablePrefix("itshare_") // 设置过滤表前缀
+                                    .addTablePrefix("ez_admin_") // 设置过滤表前缀
                                     .entityBuilder() // 设置 entity 生成规则
                                     .addTableFills(new Column("create_time", FieldFill.INSERT))
                                     .addTableFills(new Column("update_time", FieldFill.INSERT_UPDATE))
                                     .logicDeleteColumnName("is_deleted")
-                                    .idType(IdType.AUTO)
+                                    .idType(IdType.ASSIGN_ID)
                                     .enableLombok()// lombok 注解
                                     .controllerBuilder() // 设置 controller 生成规则
                                     .enableRestStyle() // 开启生成@RestController 控制器
