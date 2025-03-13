@@ -1,5 +1,25 @@
+server:
+  port: 2222
 spring:
   application:
     name: EZ-ADMIN
-server:
-  port: 2222
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://110.40.175.47:3306/ez-admin?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+    username: root
+    password: root@123456
+
+## mybatis-plus 相关配置
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+  # 打印 sql 日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件 如果和默认路径一样可以不配置
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+
