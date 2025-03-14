@@ -15,7 +15,7 @@ public class SwaggerConfig {
         // 建造者模式构建Docket
         return GroupedOpenApi.builder()
                 .addOpenApiCustomizer(openApi -> openApi.setInfo(apiInfo()))
-                .group("EZ-ADMIN")
+                .group("ez-admin")
                 // 需要放出的接口
                 .packagesToScan("com.ezadmin.modules.*.controller")
                 .build();
@@ -24,7 +24,7 @@ public class SwaggerConfig {
     private Info apiInfo() {
         return new Info()
                 .title("接口文档")
-                .description("EZ-ADMIN API描述")
+                .description("EZ-ADMIN API 描述")
                 .contact(new Contact().url("https://www.csyblog.cn").name("申阳").email("2417254000@qq.com"))
                 // MIT 协议
                 .license(new License().name("MIT License").url("https://opensource.org/licenses/MIT"))
