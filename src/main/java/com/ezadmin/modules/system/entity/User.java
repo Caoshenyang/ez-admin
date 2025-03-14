@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,9 +22,7 @@ import lombok.ToString;
  * @author shenyang
  * @since 2025-03-13
  */
-@Getter
-@Setter
-@ToString
+ @Data
 @TableName("ez_admin_user")
 @Schema(name = "User", description = "用户信息表")
 public class User implements Serializable {

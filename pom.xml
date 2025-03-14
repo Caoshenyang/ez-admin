@@ -20,6 +20,7 @@
         <knife4j.version>4.5.0</knife4j.version> <!-- knife4j 接口文档 -->
         <org.mapstruct.version>1.6.3</org.mapstruct.version> <!-- 简化 Java bean 之间的转换过程 -->
         <sa-token.version>1.40.0</sa-token.version> <!-- Sa-Token 权限认证 -->
+        <lombok.version>1.18.36</lombok.version>
     </properties>
     <dependencies>
         <dependency>
@@ -64,11 +65,31 @@
         <dependency>
             <groupId>cn.dev33</groupId>
             <artifactId>sa-token-spring-boot3-starter</artifactId>
-            <version>1.39.0</version>
+            <version>${sa-token.version}</version>
         </dependency>
+        <!-- Sa-Token 整合 Redis （使用 jackson 序列化方式） -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-redis-jackson</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+        <!-- Sa-Token 整合 jwt -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-jwt</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+
+        <!-- 提供Redis连接池 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -109,6 +130,11 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
