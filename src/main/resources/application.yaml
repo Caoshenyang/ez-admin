@@ -75,7 +75,7 @@ springdoc:
   group-configs:
     - group: 'ezadmin'
       paths-to-match: '/**'
-      packages-to-scan: com.ezadmin.modules # 扫描接口所在的包
+      packages-to-scan: com.ezadmin.modules.system.controller # 扫描接口所在的包
 # knife4j的增强配置，不需要增强可以不配
 knife4j:
   # 开启增强配置

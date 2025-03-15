@@ -1,4 +1,4 @@
-package com.ezadmin.model.dto;
+package com.ezadmin.common.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

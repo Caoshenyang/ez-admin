@@ -1,4 +1,4 @@
-package com.ezadmin.model.vo;
+package com.ezadmin.common.model.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

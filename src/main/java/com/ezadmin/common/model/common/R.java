@@ -1,4 +1,4 @@
-package com.ezadmin.model.common;
+package com.ezadmin.common.model.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

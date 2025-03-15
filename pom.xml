@@ -55,7 +55,7 @@
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>
         </dependency>
-
+        <!--  实体间转换工具类       -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>

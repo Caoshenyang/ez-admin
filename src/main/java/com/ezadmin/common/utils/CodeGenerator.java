@@ -1,4 +1,4 @@
-package com.ezadmin.utils;
+package com.ezadmin.common.utils;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;

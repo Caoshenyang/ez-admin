@@ -1,7 +1,9 @@
-package com.ezadmin.config;
+package com.ezadmin.common.config;
 
 import cn.dev33.satoken.jwt.StpLogicJwtForSimple;
+import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpLogic;
+import com.ezadmin.common.service.StpInterfaceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,5 +14,10 @@ public class SaTokenConfigure {
     @Bean
     public StpLogic getStpLogicJwt() {
         return new StpLogicJwtForSimple();
+    }
+
+    @Bean
+    public StpInterface stpInterface() {
+        return new StpInterfaceImpl();
     }
 }
