@@ -1,10 +1,9 @@
 package com.ezadmin.common.handler;
 
 import com.ezadmin.common.exception.EzAdminException;
-import com.ezadmin.common.model.common.R;
+import com.ezadmin.common.result.R;
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

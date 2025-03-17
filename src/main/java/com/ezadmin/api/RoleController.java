@@ -1,4 +1,4 @@
-package com.ezadmin.modules.system.controller;
+package com.ezadmin.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

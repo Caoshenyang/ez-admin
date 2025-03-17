@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Configuration
 @ConditionalOnClass(WebMvcConfigurer.class)  // 判断是否引入了 WebMVC
-public class SaTokenMvcConfig implements WebMvcConfigurer{
+public class SaTokenMvcConfig implements WebMvcConfigurer {
 
     // 动态获取哪些 path 可以忽略鉴权
     public static List<String> excludePaths() {
@@ -30,18 +30,17 @@ public class SaTokenMvcConfig implements WebMvcConfigurer{
                 "/swagger-resources/**",
                 "/v3/api-docs/**",
                 "/webjars/**",
-                "/favicon.ico");
+                "/favicon.ico",
+                "/auth/**");
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 注册 Sa-Token 拦截器，打开注解式鉴权功能
-        registry.addInterceptor(new SaInterceptor(handle -> {
-            SaRouter
-                    .match("/**")
-                    .notMatch(excludePaths())
-                    .check(r -> StpUtil.checkLogin());
-        })).addPathPatterns("/**");
+        registry.addInterceptor(new SaInterceptor(handle -> SaRouter
+                .match("/**")
+                .notMatch(excludePaths())
+                .check(r -> StpUtil.checkLogin()))).addPathPatterns("/**");
     }
 
 }

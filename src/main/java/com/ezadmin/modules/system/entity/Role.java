@@ -46,7 +46,7 @@ public class Role implements Serializable {
      * 角色权限字符标识
      */
     @Schema(description = "角色权限字符标识")
-    private String roleKey;
+    private String roleLabel;
 
     /**
      * 排序

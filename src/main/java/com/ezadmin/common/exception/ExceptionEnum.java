@@ -17,14 +17,11 @@ public enum ExceptionEnum {
     /**
      *  ezadmin 系统业务异常响应状态码  5xxx1 - 59999
      */
-    USERNAME_OR_PASSWORD_NOT_EMPTY(50001,"用户名或密码不能为空"),
+    ADMIN_ACCOUNT_INITIALIZED(50001,"管理员账号已初始化,请勿重复操作"),
     USERNAME_NOT_EXISTS(50002,"用户名不存在"),
-    USERNAME_OR_PASSWORD_ERROR(50003,"用户名或密码错误"),
-    USERNAME_EXISTS(50002,"用户名已存在"),
-    ADMIN_ACCOUNT_NOT_ALLOW_UPDATE(50003,"超级管理员不允许修改!"),
-    LOGIN_FAIL(50004,"用户名或密码错误!"),
-    NOT_PERMISSION(50005,"无权访问!"),
-    HAVE_CHILDREN(50006,"有子菜单，不能删除")
+    USERNAME_EXISTS(50003,"用户名已存在"),
+    USERNAME_OR_PASSWORD_ERROR(50004,"用户名或密码错误"),
+
     ;
     /**
      * 执行状态码
