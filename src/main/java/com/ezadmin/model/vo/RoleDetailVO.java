@@ -22,7 +22,7 @@ public class RoleDetailVO implements Serializable {
     private String roleName;
 
     @Schema(description = "角色标识")
-    private String roleKey;
+    private String roleLabel;
 
     @Schema(description = "数据权限【1 本人 2 本部门  3 自定义 4 全部】")
     private Long dataScope;

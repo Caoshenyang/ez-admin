@@ -3,6 +3,8 @@ package com.ezadmin.modules.system.mapper;
 import com.ezadmin.modules.system.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 
 /**
  * <p>
@@ -14,5 +16,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
+    List<Role> selectRoleListByUserId(Long userId);
 }
 

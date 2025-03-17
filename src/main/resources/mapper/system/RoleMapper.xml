@@ -2,4 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ezadmin.modules.system.mapper.RoleMapper">
 
+    <select id="selectRoleListByUserId" resultType="com.ezadmin.modules.system.entity.Role">
+        SELECT t2.role_id,
+               t2.role_name,
+               t2.role_label,
+               t2.remark,
+               t2.create_by,
+               t2.update_by,
+               t2.create_time,
+               t2.update_time
+        FROM ez_admin_user_role_relation AS t1
+                 INNER JOIN ez_admin_role AS t2 ON t1.role_id = t2.role_id
+        WHERE t1.user_id = #{userId}
+          AND t2.is_deleted = 0
+    </select>
 </mapper>
