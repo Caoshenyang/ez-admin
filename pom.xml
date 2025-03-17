@@ -20,7 +20,7 @@
         <knife4j.version>4.5.0</knife4j.version> <!-- knife4j 接口文档 -->
         <org.mapstruct.version>1.6.3</org.mapstruct.version> <!-- 简化 Java bean 之间的转换过程 -->
         <sa-token.version>1.40.0</sa-token.version> <!-- Sa-Token 权限认证 -->
-        <lombok.version>1.18.36</lombok.version>
+        <lombok.version>1.18.36</lombok.version> <!-- 简化实体类 Getter Setter 等基础方法 -->
     </properties>
     <dependencies>
         <dependency>
@@ -37,6 +37,12 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!-- mybatis-plus 分页插件 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-jsqlparser</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
         <!-- 模板引擎 -->
