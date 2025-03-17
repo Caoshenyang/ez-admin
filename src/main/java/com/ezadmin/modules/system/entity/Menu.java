@@ -42,6 +42,9 @@ public class Menu implements Serializable {
     @Schema(description = "菜单名称")
     private String menuName;
 
+    @Schema(description = "菜单标识")
+    private String menuLabel;
+
     /**
      * 父级菜单ID
      */
@@ -70,7 +73,7 @@ public class Menu implements Serializable {
      * 权限标识
      */
     @Schema(description = "权限标识")
-    private String permission;
+    private String menuPerm;
 
     /**
      * 菜单图标

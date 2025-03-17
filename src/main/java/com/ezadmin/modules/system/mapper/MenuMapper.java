@@ -1,7 +1,10 @@
 package com.ezadmin.modules.system.mapper;
 
+import com.ezadmin.model.vo.MenuPermissionVO;
 import com.ezadmin.modules.system.entity.Menu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 
 /**
@@ -14,5 +17,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface MenuMapper extends BaseMapper<Menu> {
 
+    List<MenuPermissionVO> loadMenuPermByRoleIds(List<Long> roleIds);
 }
 

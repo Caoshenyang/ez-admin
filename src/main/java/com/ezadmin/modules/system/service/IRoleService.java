@@ -1,5 +1,6 @@
 package com.ezadmin.modules.system.service;
 
+import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.modules.system.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -21,4 +22,10 @@ public interface IRoleService extends IService<Role> {
      * @return List<Role>
      */
     List<Role> selectRoleListByUserId(Long userId);
+
+    /**
+     * 查询所有角色列表
+     * @return List<Role>
+     */
+    List<Role> loadAllRoles();
 }
