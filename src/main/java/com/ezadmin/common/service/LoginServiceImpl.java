@@ -9,8 +9,6 @@ import com.ezadmin.common.exception.ExceptionEnum;
 import com.ezadmin.common.exception.EzAdminException;
 import com.ezadmin.common.utils.PasswordEncoderUtil;
 import com.ezadmin.model.dto.LoginDTO;
-import com.ezadmin.model.mpstruct.MsRoleMapper;
-import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.model.vo.TokenInfoVO;
 import com.ezadmin.modules.system.entity.Role;
 import com.ezadmin.modules.system.entity.User;
@@ -22,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -104,4 +101,23 @@ public class LoginServiceImpl {
     }
 
 
+//    public UserInfoVO getUserInfo() {
+//        long loginId = StpUtil.getLoginIdAsLong();
+//        String username = (String) StpUtil.getExtra("username");
+//        String nickname = (String) StpUtil.getExtra("nickname");
+//        String avatar = (String) StpUtil.getExtra("avatar");
+//        List<String> permissionList = StpUtil.getPermissionList(loginId);
+//        List<String> roleList = StpUtil.getRoleList(loginId);
+//        List<MenuPermissionVO> menuByRoleLabels = adminCache.getMenuByRoleLabels(roleList);
+////        List<RouterVO> routerVOs = MenuMapper.INSTANCE.MenuPermissionVO2RouterVOs(menuByRoleLabels);
+////        List<RouterVO> routers = TreeBuilder.buildTree(routerVOs);
+//        UserInfoVO userInfoVO = new UserInfoVO();
+//        userInfoVO.setPermissions(permissionList);
+//        userInfoVO.setRouters(routers);
+//        userInfoVO.setUserId(loginId);
+//        userInfoVO.setUsername(username);
+//        userInfoVO.setNickname(nickname);
+//        userInfoVO.setAvatar(avatar);
+//        return userInfoVO;
+//    }
 }

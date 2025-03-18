@@ -23,18 +23,15 @@ public class UserInfoVO implements Serializable {
     @Schema(description = "用户名")
     private String username;
 
-    @Schema(description = "密码")
-    private String password;
-
     @Schema(description = "昵称")
     private String nickname;
 
     @Schema(description = "头像")
     private String avatar;
 
-    @Schema(description = "用户角色")
-    private List<RoleDetailVO> roles;
+    @Schema(description = "权限信息")
+    private List<String> permissions;
 
-//    @Schema(description = "用户菜单")
-//    private List<MenuPermissionVO> menus;
+//    @Schema(description = "路由信息")
+//    private List<RouterVO> routers;
 }

@@ -32,4 +32,18 @@ private final LoginServiceImpl loginService;
         return R.ok(tokenInfoVO);
     }
 
+//    @Operation(summary = "获取用户信息", description = "获取用户信息")
+//    @PostMapping("/userInfo")
+//    public R<UserInfoVO> getUserInfo() {
+//        UserInfoVO userInfoVO = loginService.getUserInfo();
+//        return R.ok(userInfoVO);
+//    }
+//
+//    @Operation(summary = "登录注销", description = "登录注销")
+//    @PostMapping("logout")
+//    public R<String> logout() {
+//        authService.logout();
+//        return R.ok();
+//    }
+
 }
