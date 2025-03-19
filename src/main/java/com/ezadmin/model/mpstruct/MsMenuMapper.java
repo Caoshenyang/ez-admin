@@ -1,8 +1,9 @@
 package com.ezadmin.model.mpstruct;
 
 import com.ezadmin.model.vo.MenuPermissionVO;
-import com.ezadmin.model.vo.RouterVO;
+import com.ezadmin.model.vo.RouterTreeVO;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -14,10 +15,10 @@ import java.util.List;
  * @author shenyang
  * @since 2025/3/19 11:27
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface MsMenuMapper {
 
     MsMenuMapper INSTANCE = Mappers.getMapper(MsMenuMapper.class);
 
-    List<RouterVO> MenuPermissionVO2RouterVOs(List<MenuPermissionVO> menuByRoleLabels);
+    List<RouterTreeVO> MenuPermissionVO2RouterTreeVOs(List<MenuPermissionVO> menuByRoleLabels);
 }

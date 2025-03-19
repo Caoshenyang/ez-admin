@@ -3,6 +3,7 @@ package com.ezadmin.model.mpstruct;
 import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.modules.system.entity.Role;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -14,9 +15,9 @@ import java.util.List;
  * @author shenyang
  * @since 2025/3/17 16:21
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface MsRoleMapper {
     MsRoleMapper INSTANCE = Mappers.getMapper(MsRoleMapper.class);
 
-    List<RoleDetailVO> role2RoleDetailVO(List<Role> roles);
+    List<RoleDetailVO> role2RoleDetailVOs(List<Role> roles);
 }

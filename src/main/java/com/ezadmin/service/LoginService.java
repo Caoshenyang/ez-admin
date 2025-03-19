@@ -1,4 +1,4 @@
-package com.ezadmin.common.service;
+package com.ezadmin.service;
 
 import cn.dev33.satoken.stp.SaLoginConfig;
 import cn.dev33.satoken.stp.SaTokenInfo;
@@ -12,7 +12,7 @@ import com.ezadmin.common.utils.PasswordEncoderUtil;
 import com.ezadmin.model.dto.LoginDTO;
 import com.ezadmin.model.mpstruct.MsMenuMapper;
 import com.ezadmin.model.vo.MenuPermissionVO;
-import com.ezadmin.model.vo.RouterVO;
+import com.ezadmin.model.vo.RouterTreeVO;
 import com.ezadmin.model.vo.TokenInfoVO;
 import com.ezadmin.model.vo.UserInfoVO;
 import com.ezadmin.modules.system.entity.Role;
@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
-public class LoginServiceImpl {
+public class LoginService {
 
     private final AdminCache adminCache;
     private final IUserService userService;
@@ -130,8 +130,8 @@ public class LoginServiceImpl {
         List<String> permissionList = StpUtil.getPermissionList(loginId);
         List<String> roleList = StpUtil.getRoleList(loginId);
         List<MenuPermissionVO> menuByRoleLabels = adminCache.getMenuByRoleLabels(roleList);
-        List<RouterVO> routerVOs = MsMenuMapper.INSTANCE.MenuPermissionVO2RouterVOs(menuByRoleLabels);
-        List<RouterVO> routers = TreeBuilder.buildTree(routerVOs);
+        List<RouterTreeVO> routerTreeVOS = MsMenuMapper.INSTANCE.MenuPermissionVO2RouterTreeVOs(menuByRoleLabels);
+        List<RouterTreeVO> routers = TreeBuilder.buildTree(routerTreeVOS);
         UserInfoVO userInfoVO = new UserInfoVO();
         userInfoVO.setPermissions(permissionList);
         userInfoVO.setRouters(routers);

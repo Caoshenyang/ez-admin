@@ -19,7 +19,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class RouterVO extends TreeNode implements Serializable {
+public class RouterTreeVO extends TreeNode implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)

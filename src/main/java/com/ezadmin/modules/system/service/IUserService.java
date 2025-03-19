@@ -22,9 +22,5 @@ public interface IUserService extends IService<User> {
      */
     User selectUserByUsername(String username);
 
-    /**
-     * 新增用户
-     * @param userCreateDTO 用户信息
-     */
-    void createUser(UserCreateDTO userCreateDTO);
+    void checkUsernameExists(String username);
 }

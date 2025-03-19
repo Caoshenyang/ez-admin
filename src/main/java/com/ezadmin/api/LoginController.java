@@ -1,7 +1,7 @@
 package com.ezadmin.api;
 
 import com.ezadmin.common.result.R;
-import com.ezadmin.common.service.LoginServiceImpl;
+import com.ezadmin.service.LoginService;
 import com.ezadmin.model.dto.LoginDTO;
 import com.ezadmin.model.vo.TokenInfoVO;
 import com.ezadmin.model.vo.UserInfoVO;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth/")
 public class LoginController {
 
-private final LoginServiceImpl loginService;
+private final LoginService loginService;
 
     @Operation(summary = "初始化管理员账号")
     @PostMapping("/initialize")
