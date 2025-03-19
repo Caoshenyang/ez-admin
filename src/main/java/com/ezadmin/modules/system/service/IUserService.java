@@ -1,5 +1,6 @@
 package com.ezadmin.modules.system.service;
 
+import com.ezadmin.model.dto.UserCreateDTO;
 import com.ezadmin.modules.system.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -20,4 +21,10 @@ public interface IUserService extends IService<User> {
      * @return User
      */
     User selectUserByUsername(String username);
+
+    /**
+     * 新增用户
+     * @param userCreateDTO 用户信息
+     */
+    void createUser(UserCreateDTO userCreateDTO);
 }

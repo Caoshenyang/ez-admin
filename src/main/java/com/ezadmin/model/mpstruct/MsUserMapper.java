@@ -1,9 +1,11 @@
 package com.ezadmin.model.mpstruct;
 
+import com.ezadmin.model.dto.UserCreateDTO;
 import com.ezadmin.model.vo.UserInfoVO;
 import com.ezadmin.modules.system.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -13,13 +15,12 @@ import org.mapstruct.factory.Mappers;
  * @author shenyang
  * @since 2025/3/17 13:41
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface MsUserMapper {
     MsUserMapper INSTANCE = Mappers.getMapper(MsUserMapper.class);
 
-
-     @Mapping(target = "routers", ignore = true)
-     @Mapping(target = "permissions", ignore = true)
      UserInfoVO userToUserInfoVO(User user);
+
+    User UserCreateDTO2User(UserCreateDTO userCreateDTO);
 }
 

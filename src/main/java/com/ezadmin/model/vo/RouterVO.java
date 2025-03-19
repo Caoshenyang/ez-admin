@@ -1,6 +1,7 @@
 package com.ezadmin.model.vo;
 
 import com.ezadmin.common.result.tree.TreeNode;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -21,6 +22,7 @@ import java.io.Serializable;
 public class RouterVO extends TreeNode implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "主键ID")
     private Long menuId;
 
@@ -33,6 +35,7 @@ public class RouterVO extends TreeNode implements Serializable {
     @Schema(description = "权限字符集")
     private String menuPerm;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "父级菜单ID")
     private Long parentId;
 

@@ -1,10 +1,10 @@
 package com.ezadmin.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -18,9 +18,11 @@ import java.time.LocalDateTime;
 public class MenuPermissionVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "角色ID")
     private Long roleId;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "主键ID")
     private Long menuId;
 
@@ -42,6 +44,7 @@ public class MenuPermissionVO implements Serializable {
     @Schema(description = "菜单权限")
     private String menuPerm;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "父级菜单ID")
     private Long parentId;
 
@@ -52,18 +55,6 @@ public class MenuPermissionVO implements Serializable {
     private Integer menuSort;
 
     @Schema(description = "描述")
-    private String description;
-
-    @Schema(description = "创建者")
-    private String createBy;
-
-    @Schema(description = "更新者")
-    private String updateBy;
-
-    @Schema(description = "创建时间")
-    private LocalDateTime createTime;
-
-    @Schema(description = "更新时间")
-    private LocalDateTime updateTime;
+    private String remark;
 
 }

@@ -7,11 +7,14 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 /**
  * <p>
  * 角色信息表
@@ -70,6 +73,7 @@ public class Role implements Serializable {
      * 创建者
      */
     @Schema(description = "创建者")
+    @TableField(fill = FieldFill.INSERT)
     private String createBy;
 
     /**
@@ -83,6 +87,7 @@ public class Role implements Serializable {
      * 更新者
      */
     @Schema(description = "更新者")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
     /**

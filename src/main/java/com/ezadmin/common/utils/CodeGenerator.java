@@ -61,7 +61,9 @@ public class CodeGenerator {
                                     .addTablePrefix("ez_admin_") // 设置过滤表前缀
                                     .entityBuilder() // 设置 entity 生成规则
                                     .addTableFills(new Column("create_time", FieldFill.INSERT))
+                                    .addTableFills(new Column("create_by", FieldFill.INSERT))
                                     .addTableFills(new Column("update_time", FieldFill.INSERT_UPDATE))
+                                    .addTableFills(new Column("update_by", FieldFill.INSERT_UPDATE))
                                     .logicDeleteColumnName("is_deleted")
                                     .idType(IdType.ASSIGN_ID)
                                     .enableLombok()// lombok 注解

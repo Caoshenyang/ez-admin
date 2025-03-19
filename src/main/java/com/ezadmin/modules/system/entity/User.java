@@ -7,13 +7,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
 /**
  * <p>
  * 用户信息表
@@ -22,7 +21,7 @@ import lombok.ToString;
  * @author shenyang
  * @since 2025-03-13
  */
- @Data
+@Data
 @TableName("ez_admin_user")
 @Schema(name = "User", description = "用户信息表")
 public class User implements Serializable {
@@ -106,6 +105,7 @@ public class User implements Serializable {
      * 创建者
      */
     @Schema(description = "创建者")
+    @TableField(fill = FieldFill.INSERT)
     private String createBy;
 
     /**
@@ -119,6 +119,7 @@ public class User implements Serializable {
      * 更新者
      */
     @Schema(description = "更新者")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
     /**

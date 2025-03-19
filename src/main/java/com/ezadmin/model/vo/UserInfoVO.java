@@ -1,5 +1,6 @@
 package com.ezadmin.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class UserInfoVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "主键ID")
     private Long userId;
 

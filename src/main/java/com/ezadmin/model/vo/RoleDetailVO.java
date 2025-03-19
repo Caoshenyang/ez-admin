@@ -1,5 +1,6 @@
 package com.ezadmin.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Data
 public class RoleDetailVO implements Serializable {
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(description = "主键ID")
     private Long roleId;
 
