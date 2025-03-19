@@ -6,7 +6,7 @@ package com.ezadmin.common.exception;
  * ezadmin 系统异常
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-08-05 18:07:37
  */
 public class EzAdminException extends RuntimeException {

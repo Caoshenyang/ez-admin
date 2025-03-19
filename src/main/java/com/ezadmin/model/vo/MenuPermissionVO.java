@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * MenuPermissionVO
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-10-24 14:43:21
  */
 @Data

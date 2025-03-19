@@ -14,7 +14,7 @@ import java.util.Set;
  * 自定义权限加载接口实现类
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-12-02 15:40:09
  */
 @RequiredArgsConstructor

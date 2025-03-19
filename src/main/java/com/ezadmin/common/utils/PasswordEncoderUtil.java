@@ -7,7 +7,7 @@ import cn.dev33.satoken.secure.BCrypt;
  * 密码加解密 BCrypt
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-10-15 13:50:19
  */
 public class PasswordEncoderUtil {

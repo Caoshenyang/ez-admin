@@ -15,7 +15,7 @@ import java.util.List;
  * 如果你希望 TreeNode 只是一个纯粹的抽象类型，并且不包含任何实现细节，那么可以使用接口。但在这种情况下，你需要将 children 字段移到具体类中。
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-11-19 13:46:42
  */
 @Data

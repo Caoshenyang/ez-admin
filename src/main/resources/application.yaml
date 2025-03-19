@@ -1,5 +1,13 @@
+app:
+  info:
+    name: ez-admin
+    version: 1.0.0
+    author: shenyang
+
 server:
   port: 2222
+  servlet:
+    context-path: /api
 spring:
   application:
     name: EZ-ADMIN

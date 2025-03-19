@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * RedisCache缓存对象
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-10-24 13:56:01
  */
 @Component

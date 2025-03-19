@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * RedisTemplateConfig
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-10-24 10:17:34
  */
 @Configuration

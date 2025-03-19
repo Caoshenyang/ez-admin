@@ -13,7 +13,7 @@ import java.util.List;
  * 分页查询对象
  * </p>
  *
- * @author 曹申阳
+ * @author shenyang
  * @since 2024-10-16 16:24:56
  */
 @Data
