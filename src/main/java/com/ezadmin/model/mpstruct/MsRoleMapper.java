@@ -1,5 +1,7 @@
 package com.ezadmin.model.mpstruct;
 
+import com.ezadmin.model.dto.RoleCreateDTO;
+import com.ezadmin.model.dto.RoleUpdateDTO;
 import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.modules.system.entity.Role;
 import org.mapstruct.Mapper;
@@ -19,5 +21,9 @@ import java.util.List;
 public interface MsRoleMapper {
     MsRoleMapper INSTANCE = Mappers.getMapper(MsRoleMapper.class);
 
-    List<RoleDetailVO> role2RoleDetailVOs(List<Role> roles);
+    Role roleCreateDTO2Role(RoleCreateDTO roleCreateDTO);
+
+    Role roleUpdateDTO2Role(RoleUpdateDTO roleUpdateDTO);
+
+    RoleDetailVO role2RoleDetailVO(Role role);
 }

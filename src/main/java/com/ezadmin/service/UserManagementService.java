@@ -3,9 +3,6 @@ package com.ezadmin.service;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ezadmin.common.constants.UserConstants;
-import com.ezadmin.common.exception.ExceptionEnum;
-import com.ezadmin.common.exception.EzAdminException;
 import com.ezadmin.common.result.page.PageQuery;
 import com.ezadmin.common.result.page.PageVO;
 import com.ezadmin.common.utils.PasswordEncoderUtil;
@@ -18,8 +15,6 @@ import com.ezadmin.modules.system.entity.User;
 import com.ezadmin.modules.system.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 /**
  * 类名: UserManagementService
@@ -44,7 +39,7 @@ public class UserManagementService {
         userService.checkUsernameExists(userCreateDTO.getUsername());
         // 密码加密
         userCreateDTO.setPassword(PasswordEncoderUtil.encode(userCreateDTO.getPassword()));
-        User user = MsUserMapper.INSTANCE.UserCreateDTO2User(userCreateDTO);
+        User user = MsUserMapper.INSTANCE.userCreateDTO2User(userCreateDTO);
         userService.save(user);
     }
 
@@ -54,7 +49,7 @@ public class UserManagementService {
      * @param userUpdateDTO userUpdateDTO
      */
     public void updateUser(UserUpdateDTO userUpdateDTO) {
-        User user = MsUserMapper.INSTANCE.UserUpdateDTO2User(userUpdateDTO);
+        User user = MsUserMapper.INSTANCE.userUpdateDTO2User(userUpdateDTO);
         userService.updateById(user);
     }
 

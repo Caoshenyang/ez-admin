@@ -5,7 +5,6 @@ import com.ezadmin.model.dto.UserUpdateDTO;
 import com.ezadmin.model.vo.UserInfoVO;
 import com.ezadmin.modules.system.entity.User;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -22,8 +21,8 @@ public interface MsUserMapper {
 
      UserInfoVO userToUserInfoVO(User user);
 
-    User UserCreateDTO2User(UserCreateDTO userCreateDTO);
+    User userCreateDTO2User(UserCreateDTO userCreateDTO);
 
-    User UserUpdateDTO2User(UserUpdateDTO userUpdateDTO);
+    User userUpdateDTO2User(UserUpdateDTO userUpdateDTO);
 }
 

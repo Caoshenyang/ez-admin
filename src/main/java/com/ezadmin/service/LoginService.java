@@ -130,7 +130,7 @@ public class LoginService {
         List<String> permissionList = StpUtil.getPermissionList(loginId);
         List<String> roleList = StpUtil.getRoleList(loginId);
         List<MenuPermissionVO> menuByRoleLabels = adminCache.getMenuByRoleLabels(roleList);
-        List<RouterTreeVO> routerTreeVOS = MsMenuMapper.INSTANCE.MenuPermissionVO2RouterTreeVOs(menuByRoleLabels);
+        List<RouterTreeVO> routerTreeVOS = MsMenuMapper.INSTANCE.menuPermissionVO2RouterTreeVOs(menuByRoleLabels);
         List<RouterTreeVO> routers = TreeBuilder.buildTree(routerTreeVOS);
         UserInfoVO userInfoVO = new UserInfoVO();
         userInfoVO.setPermissions(permissionList);

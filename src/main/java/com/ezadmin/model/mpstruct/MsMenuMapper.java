@@ -20,5 +20,5 @@ public interface MsMenuMapper {
 
     MsMenuMapper INSTANCE = Mappers.getMapper(MsMenuMapper.class);
 
-    List<RouterTreeVO> MenuPermissionVO2RouterTreeVOs(List<MenuPermissionVO> menuByRoleLabels);
+    List<RouterTreeVO> menuPermissionVO2RouterTreeVOs(List<MenuPermissionVO> menuByRoleLabels);
 }
