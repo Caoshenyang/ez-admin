@@ -7,9 +7,14 @@ import com.ezadmin.common.cache.AdminCache;
 import com.ezadmin.common.constants.UserConstants;
 import com.ezadmin.common.exception.ExceptionEnum;
 import com.ezadmin.common.exception.EzAdminException;
+import com.ezadmin.common.result.tree.TreeBuilder;
 import com.ezadmin.common.utils.PasswordEncoderUtil;
 import com.ezadmin.model.dto.LoginDTO;
+import com.ezadmin.model.mpstruct.MsMenuMapper;
+import com.ezadmin.model.vo.MenuPermissionVO;
+import com.ezadmin.model.vo.RouterVO;
 import com.ezadmin.model.vo.TokenInfoVO;
+import com.ezadmin.model.vo.UserInfoVO;
 import com.ezadmin.modules.system.entity.Role;
 import com.ezadmin.modules.system.entity.User;
 import com.ezadmin.modules.system.entity.UserRoleRelation;
@@ -39,6 +44,11 @@ public class LoginServiceImpl {
     private final IRoleService roleService;
     private final IUserRoleRelationService userRoleRelationService;
 
+    /**
+     * 登录返回 token 信息
+     * @param loginDTO 登录信息
+     * @return TokenInfoVO
+     */
     public TokenInfoVO login(LoginDTO loginDTO) {
 
         User user = userService.selectUserByUsername(loginDTO.getUsername());
@@ -67,6 +77,9 @@ public class LoginServiceImpl {
         return tokenInfoVO;
     }
 
+    /**
+     * 初始化管理员账号
+     */
     @Transactional(rollbackFor = Exception.class)
     public void initializeAdminAccount() {
 
@@ -93,6 +106,9 @@ public class LoginServiceImpl {
         userRoleRelationService.save(adminUserRoleRelation);
     }
 
+    /**
+     * 校验是否已初始化管理员账号
+     */
     public void checkInitAdminAccount() {
         User user = userService.selectUserByUsername(UserConstants.ADMIN_USER_NAME);
         if (user != null) {
@@ -101,23 +117,35 @@ public class LoginServiceImpl {
     }
 
 
-//    public UserInfoVO getUserInfo() {
-//        long loginId = StpUtil.getLoginIdAsLong();
-//        String username = (String) StpUtil.getExtra("username");
-//        String nickname = (String) StpUtil.getExtra("nickname");
-//        String avatar = (String) StpUtil.getExtra("avatar");
-//        List<String> permissionList = StpUtil.getPermissionList(loginId);
-//        List<String> roleList = StpUtil.getRoleList(loginId);
-//        List<MenuPermissionVO> menuByRoleLabels = adminCache.getMenuByRoleLabels(roleList);
-////        List<RouterVO> routerVOs = MenuMapper.INSTANCE.MenuPermissionVO2RouterVOs(menuByRoleLabels);
-////        List<RouterVO> routers = TreeBuilder.buildTree(routerVOs);
-//        UserInfoVO userInfoVO = new UserInfoVO();
-//        userInfoVO.setPermissions(permissionList);
-//        userInfoVO.setRouters(routers);
-//        userInfoVO.setUserId(loginId);
-//        userInfoVO.setUsername(username);
-//        userInfoVO.setNickname(nickname);
-//        userInfoVO.setAvatar(avatar);
-//        return userInfoVO;
-//    }
+
+    /**
+     * 获取用户信息
+     * @return UserInfoVO
+     */
+    public UserInfoVO getUserInfo() {
+        long loginId = StpUtil.getLoginIdAsLong();
+        String username = (String) StpUtil.getExtra("username");
+        String nickname = (String) StpUtil.getExtra("nickname");
+        String avatar = (String) StpUtil.getExtra("avatar");
+        List<String> permissionList = StpUtil.getPermissionList(loginId);
+        List<String> roleList = StpUtil.getRoleList(loginId);
+        List<MenuPermissionVO> menuByRoleLabels = adminCache.getMenuByRoleLabels(roleList);
+        List<RouterVO> routerVOs = MsMenuMapper.INSTANCE.MenuPermissionVO2RouterVOs(menuByRoleLabels);
+        List<RouterVO> routers = TreeBuilder.buildTree(routerVOs);
+        UserInfoVO userInfoVO = new UserInfoVO();
+        userInfoVO.setPermissions(permissionList);
+        userInfoVO.setRouters(routers);
+        userInfoVO.setUserId(loginId);
+        userInfoVO.setUsername(username);
+        userInfoVO.setNickname(nickname);
+        userInfoVO.setAvatar(avatar);
+        return userInfoVO;
+    }
+
+    /**
+     * 退出登录
+     */
+    public void logout() {
+        StpUtil.logout();
+    }
 }

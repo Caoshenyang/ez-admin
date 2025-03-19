@@ -32,6 +32,6 @@ public class UserInfoVO implements Serializable {
     @Schema(description = "权限信息")
     private List<String> permissions;
 
-//    @Schema(description = "路由信息")
-//    private List<RouterVO> routers;
+    @Schema(description = "路由信息")
+    private List<RouterVO> routers;
 }

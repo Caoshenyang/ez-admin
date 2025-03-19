@@ -18,7 +18,8 @@ public interface MsUserMapper {
     MsUserMapper INSTANCE = Mappers.getMapper(MsUserMapper.class);
 
 
-    @Mapping(target = "roles", ignore = true)
-    UserInfoVO userToUserInfoVO(User user);
+     @Mapping(target = "routers", ignore = true)
+     @Mapping(target = "permissions", ignore = true)
+     UserInfoVO userToUserInfoVO(User user);
 }
 

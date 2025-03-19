@@ -4,10 +4,9 @@ import com.ezadmin.common.result.tree.TreeNode;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * <p>
@@ -18,7 +17,8 @@ import java.util.List;
  * @since 2024-11-19 13:40:59
  */
 @Data
-public class RouterTreeVO implements TreeNode, Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class RouterVO extends TreeNode implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Schema(description = "主键ID")
@@ -54,17 +54,9 @@ public class RouterTreeVO implements TreeNode, Serializable {
     @Schema(description = "描述")
     private String description;
 
-    @Schema(description = "子节点")
-    private List<TreeNode> children = new ArrayList<>();
-
     @JsonIgnore
     @Override
     public Long getNodeId() {
         return menuId;
-    }
-
-    @Override
-    public void addChild(TreeNode child) {
-        children.add(child);
     }
 }
