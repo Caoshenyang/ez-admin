@@ -1,27 +1,20 @@
 package com.ezadmin.modules.system.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 /**
  * <p>
  * 菜单信息表
  * </p>
  *
  * @author shenyang
- * @since 2025-03-13
+ * @since 2025-03-20
  */
 @Getter
 @Setter
@@ -45,6 +38,15 @@ public class Menu implements Serializable {
     @Schema(description = "菜单名称")
     private String menuName;
 
+    /**
+     * 菜单图标
+     */
+    @Schema(description = "菜单图标")
+    private String menuIcon;
+
+    /**
+     * 菜单标识
+     */
     @Schema(description = "菜单标识")
     private String menuLabel;
 
@@ -67,22 +69,16 @@ public class Menu implements Serializable {
     private Integer menuType;
 
     /**
-     * 菜单状态【0 正常 1 停用】
-     */
-    @Schema(description = "菜单状态【0 正常 1 停用】")
-    private Integer status;
-
-    /**
      * 权限标识
      */
     @Schema(description = "权限标识")
     private String menuPerm;
 
     /**
-     * 菜单图标
+     * 菜单状态【0 正常 1 停用】
      */
-    @Schema(description = "菜单图标")
-    private String menuIcon;
+    @Schema(description = "菜单状态【0 正常 1 停用】")
+    private Integer status;
 
     /**
      * 创建者
@@ -113,10 +109,10 @@ public class Menu implements Serializable {
     private LocalDateTime updateTime;
 
     /**
-     * 备注
+     * 描述信息
      */
-    @Schema(description = "备注")
-    private String remark;
+    @Schema(description = "描述信息")
+    private String description;
 
     /**
      * 是否删除【0 正常 1 已删除】

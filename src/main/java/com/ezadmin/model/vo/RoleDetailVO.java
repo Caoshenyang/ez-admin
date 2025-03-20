@@ -30,5 +30,5 @@ public class RoleDetailVO implements Serializable {
     private Long dataScope;
 
     @Schema(description = "描述")
-    private String remark;
+    private String description;
 }

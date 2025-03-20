@@ -1,27 +1,24 @@
 package com.ezadmin.modules.system.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
-import lombok.Data;
-
 /**
  * <p>
  * 用户信息表
  * </p>
  *
  * @author shenyang
- * @since 2025-03-13
+ * @since 2025-03-20
  */
-@Data
+@Getter
+@Setter
+@ToString
 @TableName("ez_admin_user")
 @Schema(name = "User", description = "用户信息表")
 public class User implements Serializable {
@@ -130,10 +127,10 @@ public class User implements Serializable {
     private LocalDateTime updateTime;
 
     /**
-     * 备注
+     * 描述信息
      */
-    @Schema(description = "备注")
-    private String remark;
+    @Schema(description = "描述信息")
+    private String description;
 
     /**
      * 是否删除【0 正常 1 已删除】

@@ -55,6 +55,6 @@ public class MenuPermissionVO implements Serializable {
     private Integer menuSort;
 
     @Schema(description = "描述")
-    private String remark;
+    private String description;
 
 }

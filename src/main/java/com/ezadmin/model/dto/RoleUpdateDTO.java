@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * 类名: RoleCreateDTO
- * 功能描述: 角色创建对象
+ * 功能描述: 角色更新对象
  *
  * @author shenyang
  * @since 2025/3/19 17:08
@@ -48,6 +48,6 @@ public class RoleUpdateDTO implements Serializable {
      * 备注
      */
     @Schema(description = "备注")
-    private String remark;
+    private String description;
 
 }

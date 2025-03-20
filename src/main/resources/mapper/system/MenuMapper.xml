@@ -13,7 +13,7 @@
         t2.menu_type,
         t2.menu_sort,
         t2.menu_icon,
-        t2.remark,
+        t2.description,
         t2.create_by,
         t2.update_by,
         t2.create_time,

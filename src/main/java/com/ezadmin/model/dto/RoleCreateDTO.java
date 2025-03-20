@@ -44,6 +44,6 @@ public class RoleCreateDTO implements Serializable {
      * 备注
      */
     @Schema(description = "备注")
-    private String remark;
+    private String description;
 
 }

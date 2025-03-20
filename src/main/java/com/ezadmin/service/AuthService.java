@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
-public class LoginService {
+public class AuthService {
 
     private final AdminCache adminCache;
     private final IUserService userService;

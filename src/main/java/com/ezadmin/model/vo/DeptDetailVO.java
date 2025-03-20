@@ -1,35 +1,27 @@
-package com.ezadmin.modules.system.entity;
+package com.ezadmin.model.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 /**
- * <p>
- * 部门信息表
- * </p>
+ * 类名: DeptDetailVO
+ * 功能描述: 部门详情对象
  *
  * @author shenyang
- * @since 2025-03-20
+ * @since 2025/3/20 14:29
  */
-@Getter
-@Setter
-@ToString
-@TableName("ez_admin_dept")
-@Schema(name = "Dept", description = "部门信息表")
-public class Dept implements Serializable {
-
+@Data
+public class DeptDetailVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
      * 部门ID
      */
     @Schema(description = "部门ID")
-    @TableId(value = "dept_id", type = IdType.ASSIGN_ID)
     private Long deptId;
 
     /**
@@ -60,34 +52,26 @@ public class Dept implements Serializable {
      * 创建者
      */
     @Schema(description = "创建者")
-    @TableField(fill = FieldFill.INSERT)
     private String createBy;
 
     /**
      * 更新者
      */
     @Schema(description = "更新者")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateBy;
 
     /**
      * 创建时间
      */
     @Schema(description = "创建时间")
-    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
     @Schema(description = "更新时间")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
-    /**
-     * 是否删除【0 正常 1 已删除】
-     */
-    @TableLogic
-    @Schema(description = "是否删除【0 正常 1 已删除】")
-    private Integer isDeleted;
+
+
 }
