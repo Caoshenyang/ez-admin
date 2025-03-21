@@ -5,6 +5,7 @@ import com.ezadmin.model.dto.DeptUpdateDTO;
 import com.ezadmin.model.vo.DeptDetailVO;
 import com.ezadmin.model.vo.DeptTreeVO;
 import com.ezadmin.modules.system.entity.Dept;
+import com.ezadmin.modules.system.entity.Menu;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
