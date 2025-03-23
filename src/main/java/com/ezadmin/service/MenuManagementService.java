@@ -30,18 +30,29 @@ public class MenuManagementService {
 
     private final IMenuService menuService;
 
-
+    /**
+     * 创建菜单
+     * @param menuCreateDTO menuCreateDTO
+     */
     public void createMenu(MenuCreateDTO menuCreateDTO) {
         // todo 校验菜单唯一性
         Menu menu = MsMenuMapper.INSTANCE.menuCreateDTO2Menu(menuCreateDTO);
         menuService.save(menu);
     }
 
+    /**
+     * 更新菜单
+     * @param menuUpdateDTO menuUpdateDTO
+     */
     public void updateMenu(MenuUpdateDTO menuUpdateDTO) {
         Menu menu = MsMenuMapper.INSTANCE.menuUpdateDTO2Menu(menuUpdateDTO);
         menuService.updateById(menu);
     }
 
+    /**
+     * 删除菜单
+     * @param menuId menuId
+     */
     public void deleteMenu(Long menuId) {
         // todo 删除菜单前校验 如果有自己菜单，并且被引用，则不允许删除
         menuService.removeById(menuId);
