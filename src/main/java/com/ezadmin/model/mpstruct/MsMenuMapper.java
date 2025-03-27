@@ -5,7 +5,6 @@ import com.ezadmin.model.dto.MenuUpdateDTO;
 import com.ezadmin.model.vo.MenuDetailVO;
 import com.ezadmin.model.vo.MenuPermissionVO;
 import com.ezadmin.model.vo.MenuTreeVO;
-import com.ezadmin.model.vo.RouterTreeVO;
 import com.ezadmin.modules.system.entity.Menu;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -25,8 +24,6 @@ public interface MsMenuMapper {
 
     MsMenuMapper INSTANCE = Mappers.getMapper(MsMenuMapper.class);
 
-    List<RouterTreeVO> menuPermissionVO2RouterTreeVOs(List<MenuPermissionVO> menuByRoleLabels);
-
     Menu menuCreateDTO2Menu(MenuCreateDTO menuCreateDTO);
 
     Menu menuUpdateDTO2Menu(MenuUpdateDTO menuUpdateDTO);
@@ -34,4 +31,6 @@ public interface MsMenuMapper {
     List<MenuTreeVO> menu2MenuTreeVOs(List<Menu> menus);
 
     MenuDetailVO menu2MenuDetailVO(Menu menu);
+
+    List<MenuTreeVO> menuPermissionVO2MenuTreeVOs(List<MenuPermissionVO> menuByRoleLabels);
 }

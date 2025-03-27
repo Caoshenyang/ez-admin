@@ -35,5 +35,5 @@ public class UserInfoVO implements Serializable {
     private List<String> permissions;
 
     @Schema(description = "路由信息")
-    private List<RouterTreeVO> routers;
+    private List<MenuTreeVO> menus;
 }
