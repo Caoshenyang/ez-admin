@@ -58,13 +58,32 @@ public class MenuManagementService {
         menuService.removeById(menuId);
     }
 
+    /**
+     * 根据菜单id获取菜单详情
+     * @param menuId menuId
+     * @return MenuDetailVO
+     */
+    public MenuDetailVO getMenuDetailById(Long menuId) {
+        return Optional.ofNullable(menuService.getById(menuId))
+                .map(MsMenuMapper.INSTANCE::menu2MenuDetailVO)
+                .orElse(null);
+    }
+
+    /**
+     * 根据角色id加载菜单
+     * @param menuId menuId
+     * @return MenuDetailVO
+     */
     public MenuDetailVO getMenuById(Long menuId) {
         return Optional.ofNullable(menuService.getById(menuId))
                 .map(MsMenuMapper.INSTANCE::menu2MenuDetailVO)
                 .orElse(null);
     }
 
-
+    /**
+     * 查询菜单树
+     * @return List<MenuTreeVO>
+     */
     public List<MenuTreeVO> findMenuTree() {
         return Optional.ofNullable(menuService.list())
                 .filter(CollectionUtils::isNotEmpty)

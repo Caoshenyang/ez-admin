@@ -22,5 +22,9 @@ public interface IUserService extends IService<User> {
      */
     User selectUserByUsername(String username);
 
+    /**
+     * 检查用户名是否存在
+     * @param username 用户名
+     */
     void checkUsernameExists(String username);
 }
