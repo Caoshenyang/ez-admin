@@ -35,11 +35,14 @@ public class MenuPermissionVO implements Serializable {
     @Schema(description = "菜单图标")
     private String menuIcon;
 
-    @Schema(description = "菜单路径")
-    private String menuPath;
+    @Schema(description = "路由地址")
+    private String routePath;
 
     @Schema(description = "组件名称")
     private String component;
+
+    @Schema(description = "组件路径")
+    private String componentPath;
 
     @Schema(description = "菜单权限")
     private String menuPerm;
@@ -56,5 +59,7 @@ public class MenuPermissionVO implements Serializable {
 
     @Schema(description = "描述")
     private String description;
+
+
 
 }

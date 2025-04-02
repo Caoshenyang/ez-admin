@@ -8,13 +8,14 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 /**
  * <p>
  * 菜单信息表
  * </p>
  *
  * @author shenyang
- * @since 2025-03-20
+ * @since 2025-04-02
  */
 @Getter
 @Setter
@@ -73,6 +74,24 @@ public class Menu implements Serializable {
      */
     @Schema(description = "权限标识")
     private String menuPerm;
+
+    /**
+     * 路由地址
+     */
+    @Schema(description = "路由地址")
+    private String routePath;
+
+    /**
+     * 组件名称
+     */
+    @Schema(description = "组件名称")
+    private String component;
+
+    /**
+     * 组件路径
+     */
+    @Schema(description = "组件路径")
+    private String componentPath;
 
     /**
      * 菜单状态【0 正常 1 停用】

@@ -71,6 +71,24 @@ public class MenuTreeVO extends TreeNode implements Serializable {
     private String menuPerm;
 
     /**
+     * 路由地址
+     */
+    @Schema(description = "路由地址")
+    private String routePath;
+
+    /**
+     * 组件名称
+     */
+    @Schema(description = "组件名称")
+    private String component;
+
+    /**
+     * 组件路径
+     */
+    @Schema(description = "组件路径")
+    private String componentPath;
+
+    /**
      * 菜单状态【0 正常 1 停用】
      */
     @Schema(description = "菜单状态【0 正常 1 停用】")
