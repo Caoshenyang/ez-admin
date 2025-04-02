@@ -37,23 +37,41 @@ public class RoleManagementService {
         roleService.save(role);
     }
 
+    /**
+     * 更新角色
+     * @param roleUpdateDTO 角色更新参数
+     */
     public void updateRole(RoleUpdateDTO roleUpdateDTO) {
         // todo 校验角色名称唯一性
         Role role = MsRoleMapper.INSTANCE.roleUpdateDTO2Role(roleUpdateDTO);
         roleService.updateById(role);
     }
 
+    /**
+     * 删除角色
+     * @param roleId 角色id
+     */
     public void removeRole(Long roleId) {
         // todo 1. 删除时判断角色是否被使用 2. 删除角色权限关联表数据
         roleService.removeById(roleId);
     }
 
+    /**
+     * 菜单-分页查询
+     * @param query query
+     * @return PageVO<RoleListVO>
+     */
     public PageVO<RoleListVO> findPage(PageQuery<?> query) {
         Page<Role> page = query.toMpPage();
         roleService.page(page);
         return PageVO.of(page, RoleListVO.class);
     }
 
+    /**
+     * 根据角色id加载菜单
+     * @param roleId roleId
+     * @return RoleDetailVO
+     */
     public RoleDetailVO getRoleById(Long roleId) {
         Role role = roleService.getById(roleId);
         return MsRoleMapper.INSTANCE.role2RoleDetailVO(role);
