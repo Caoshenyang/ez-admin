@@ -18,7 +18,7 @@ import java.io.IOException;
 @Component
 public class SnowflakeIdDeserializer extends JsonDeserializer<Long> {
     @Override
-    public Long deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    public Long deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         // 字符串转为Long类型
         return jsonParser.getText() == null ? null : Long.parseLong(jsonParser.getText());
     }

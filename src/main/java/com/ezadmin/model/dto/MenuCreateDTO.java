@@ -41,7 +41,6 @@ public class MenuCreateDTO implements Serializable {
     /**
      * 父级菜单ID
      */
-    @SnowflakeId
     @Schema(description = "父级菜单ID")
     private Long parentId;
 
