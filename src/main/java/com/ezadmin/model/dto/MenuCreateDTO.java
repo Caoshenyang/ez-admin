@@ -2,6 +2,7 @@ package com.ezadmin.model.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.ezadmin.common.annotation.SnowflakeId;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -40,6 +41,7 @@ public class MenuCreateDTO implements Serializable {
     /**
      * 父级菜单ID
      */
+    @SnowflakeId
     @Schema(description = "父级菜单ID")
     private Long parentId;
 

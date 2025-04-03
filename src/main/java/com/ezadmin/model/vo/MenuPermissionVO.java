@@ -1,5 +1,6 @@
 package com.ezadmin.model.vo;
 
+import com.ezadmin.common.annotation.SnowflakeId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -18,11 +19,11 @@ import java.io.Serializable;
 public class MenuPermissionVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @SnowflakeId
     @Schema(description = "角色ID")
     private Long roleId;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @SnowflakeId
     @Schema(description = "主键ID")
     private Long menuId;
 
@@ -47,7 +48,7 @@ public class MenuPermissionVO implements Serializable {
     @Schema(description = "菜单权限")
     private String menuPerm;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @SnowflakeId
     @Schema(description = "父级菜单ID")
     private Long parentId;
 

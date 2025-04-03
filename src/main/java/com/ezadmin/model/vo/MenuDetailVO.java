@@ -1,5 +1,6 @@
 package com.ezadmin.model.vo;
 
+import com.ezadmin.common.annotation.SnowflakeId;
 import com.ezadmin.common.result.tree.TreeNode;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class MenuDetailVO implements Serializable {
     /**
      * 菜单ID
      */
+    @SnowflakeId
     @Schema(description = "菜单ID")
     private Long menuId;
 
@@ -46,6 +48,7 @@ public class MenuDetailVO implements Serializable {
     /**
      * 父级菜单ID
      */
+    @SnowflakeId
     @Schema(description = "父级菜单ID")
     private Long parentId;
 
