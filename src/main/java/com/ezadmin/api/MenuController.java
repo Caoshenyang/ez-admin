@@ -1,6 +1,5 @@
 package com.ezadmin.api;
 
-import com.ezadmin.common.annotation.SnowflakeId;
 import com.ezadmin.common.result.R;
 import com.ezadmin.model.dto.MenuCreateDTO;
 import com.ezadmin.model.dto.MenuUpdateDTO;
@@ -47,14 +46,14 @@ public class MenuController {
 
     @Operation(summary = "删除")
     @DeleteMapping("/delete/{menuId}")
-    public R<String> deleteMenu(@SnowflakeId @PathVariable("menuId") Long menuId) {
+    public R<String> deleteMenu(@PathVariable("menuId") Long menuId) {
         menuManagementService.deleteMenu(menuId);
         return R.ok();
     }
 
     @Operation(summary = "根据ID查询菜单", description = "根据ID查询菜单")
     @GetMapping("/{menuId}")
-    public R<MenuDetailVO> getMenuById(@SnowflakeId @PathVariable("menuId") Long menuId) {
+    public R<MenuDetailVO> getMenuById(@PathVariable("menuId") Long menuId) {
         return R.ok(menuManagementService.getMenuById(menuId));
     }
     @Operation(summary = "查询菜单列表（树）", description = "查询菜单列表（树）")
