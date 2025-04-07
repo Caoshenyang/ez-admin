@@ -15,7 +15,6 @@ import java.io.IOException;
  * @author shenyang
  * @since 2025/4/3 14:01
  */
-@Component
 public class SnowflakeIdDeserializer extends JsonDeserializer<Long> {
     @Override
     public Long deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {

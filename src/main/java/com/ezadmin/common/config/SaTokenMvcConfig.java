@@ -24,7 +24,6 @@ import java.util.List;
  */
 @Slf4j
 @Configuration
-@Import(HttpMessageConvertersAutoConfiguration.class)
 @ConditionalOnClass(WebMvcConfigurer.class)  // 判断是否引入了 WebMVC
 public class SaTokenMvcConfig implements WebMvcConfigurer {
 

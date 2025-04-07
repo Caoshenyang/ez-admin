@@ -11,6 +11,11 @@ server:
 spring:
   application:
     name: EZ-ADMIN
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  # 全局日期格式
+    time-zone: Asia/Shanghai          # 时区（按需修改）
+    serialization:
+      write-dates-as-timestamps: false  # 禁用时间戳格式
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true

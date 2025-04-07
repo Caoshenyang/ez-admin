@@ -1,14 +1,18 @@
 package com.ezadmin.model.vo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.ezadmin.common.annotation.SnowflakeId;
 import com.ezadmin.common.result.tree.TreeNode;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 类名: MenuTreeVO
@@ -97,6 +101,10 @@ public class MenuTreeVO extends TreeNode implements Serializable {
     @Schema(description = "菜单状态【0 正常 1 停用】")
     private Integer status;
 
+    @Schema(description = "更新时间")
+    private LocalDateTime updateTime;
+
+    @JsonIgnore
     @Override
     public Long getNodeId() {
         return menuId;
