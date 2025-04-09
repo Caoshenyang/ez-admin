@@ -39,8 +39,8 @@ public class MenuPermissionVO implements Serializable {
     @Schema(description = "路由地址")
     private String routePath;
 
-    @Schema(description = "组件名称")
-    private String component;
+    @Schema(description = "路由名称")
+    private String routeName;
 
     @Schema(description = "组件路径")
     private String componentPath;

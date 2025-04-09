@@ -69,10 +69,10 @@ public class MenuCreateDTO implements Serializable {
     private String routePath;
 
     /**
-     * 组件名称
+     * 路由名称
      */
-    @Schema(description = "组件名称")
-    private String component;
+    @Schema(description = "路由名称")
+    private String routeName;
 
     /**
      * 组件路径
