@@ -1,5 +1,6 @@
 package com.ezadmin.model.vo;
 
+import com.ezadmin.common.annotation.SnowflakeId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class RoleListVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @SnowflakeId
     @Schema(description = "主键ID")
     private Long roleId;
 
@@ -29,10 +30,13 @@ public class RoleListVO implements Serializable {
     @Schema(description = "角色标识")
     private String roleLabel;
 
-    @Schema(description = "创建时间")
-    private LocalDateTime createTime;
+    @Schema(description = "排序")
+    private Integer roleSort;
 
-    @Schema(description = "更新时间")
-    private LocalDateTime updateTime;
+    @Schema(description = "数据范围【1 仅本人数据权限 2 本部门数据权限 3 本部门及以下数据权限 4 自定义数据权限 5 全部数据权限】")
+    private Integer dataScope;
+
+    @Schema(description = "角色状态【0 正常 1 停用】")
+    private Integer status;
 
 }
