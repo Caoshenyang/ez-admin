@@ -3,6 +3,7 @@ package com.ezadmin.api;
 import com.ezadmin.common.result.R;
 import com.ezadmin.model.dto.MenuCreateDTO;
 import com.ezadmin.model.dto.MenuUpdateDTO;
+import com.ezadmin.model.query.MenuQuery;
 import com.ezadmin.model.vo.MenuDetailVO;
 import com.ezadmin.model.vo.MenuTreeVO;
 import com.ezadmin.service.MenuManagementService;
@@ -58,7 +59,7 @@ public class MenuController {
     }
     @Operation(summary = "查询菜单列表（树）", description = "查询菜单列表（树）")
     @PostMapping("/tree")
-    public R<List<MenuTreeVO>> findMenuTree() {
-        return R.ok(menuManagementService.findMenuTree());
+    public R<List<MenuTreeVO>> findMenuTree(MenuQuery menuQuery) {
+        return R.ok(menuManagementService.findMenuTree(menuQuery));
     }
 }

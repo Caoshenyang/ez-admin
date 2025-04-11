@@ -1,20 +1,25 @@
 package com.ezadmin.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.ezadmin.common.result.tree.TreeBuilder;
 import com.ezadmin.model.dto.MenuCreateDTO;
 import com.ezadmin.model.dto.MenuUpdateDTO;
 import com.ezadmin.model.mpstruct.MsDeptMapper;
 import com.ezadmin.model.mpstruct.MsMenuMapper;
+import com.ezadmin.model.query.MenuQuery;
 import com.ezadmin.model.vo.DeptDetailVO;
 import com.ezadmin.model.vo.MenuDetailVO;
 import com.ezadmin.model.vo.MenuTreeVO;
 import com.ezadmin.modules.system.entity.Menu;
 import com.ezadmin.modules.system.service.IMenuService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -84,8 +89,13 @@ public class MenuManagementService {
      * 查询菜单树
      * @return List<MenuTreeVO>
      */
-    public List<MenuTreeVO> findMenuTree() {
-        return Optional.ofNullable(menuService.list())
+    public List<MenuTreeVO> findMenuTree(MenuQuery menuQuery) {
+        // 构建查询条件
+        LambdaQueryWrapper<Menu> queryWrapper = new LambdaQueryWrapper<Menu>()
+                .eq(StringUtils.isNotBlank(menuQuery.getMenuName()), Menu::getMenuName, menuQuery.getMenuName())
+                .eq(Objects.nonNull(menuQuery.getStatus()), Menu::getStatus, menuQuery.getStatus());
+
+        return Optional.ofNullable(menuService.list(queryWrapper))
                 .filter(CollectionUtils::isNotEmpty)
                 .map(MsMenuMapper.INSTANCE::menu2MenuTreeVOs)
                 .map(TreeBuilder::buildTree)

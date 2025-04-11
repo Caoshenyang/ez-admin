@@ -34,7 +34,7 @@ private final AuthService authService;
     }
 
     @Operation(summary = "获取用户信息", description = "获取用户信息")
-    @PostMapping("/userInfo")
+    @GetMapping("/userInfo")
     public R<UserInfoVO> getUserInfo() {
         UserInfoVO userInfoVO = authService.getUserInfo();
         return R.ok(userInfoVO);
