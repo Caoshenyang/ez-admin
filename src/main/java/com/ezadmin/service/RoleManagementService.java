@@ -4,14 +4,20 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ezadmin.common.result.page.PageQuery;
 import com.ezadmin.common.result.page.PageVO;
 import com.ezadmin.model.dto.RoleCreateDTO;
+import com.ezadmin.model.dto.RoleMenuRelationDTO;
 import com.ezadmin.model.dto.RoleUpdateDTO;
 import com.ezadmin.model.mpstruct.MsRoleMapper;
 import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.model.vo.RoleListVO;
 import com.ezadmin.modules.system.entity.Role;
+import com.ezadmin.modules.system.entity.RoleMenuRelation;
+import com.ezadmin.modules.system.service.IRoleMenuRelationService;
 import com.ezadmin.modules.system.service.IRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 类名: RoleManagementService
@@ -25,6 +31,7 @@ import org.springframework.stereotype.Service;
 public class RoleManagementService {
 
     private final IRoleService roleService;
+    private final IRoleMenuRelationService roleMenuRelationService;
 
     /**
      * 创建角色
@@ -75,5 +82,21 @@ public class RoleManagementService {
     public RoleDetailVO getRoleById(Long roleId) {
         Role role = roleService.getById(roleId);
         return MsRoleMapper.INSTANCE.role2RoleDetailVO(role);
+    }
+
+    public List<String> findMenusByRoleId(Long roleId) {
+        return roleMenuRelationService.findMenusByRoleId(roleId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void saveRoleMenus(RoleMenuRelationDTO roleMenuRelationDTO) {
+        // 清除角色权限关联表数据
+        roleMenuRelationService.removeByRoleId(roleMenuRelationDTO.getRoleId());
+        roleMenuRelationService.saveBatch(roleMenuRelationDTO.getMenuIds().stream().map(menuId -> {
+            RoleMenuRelation roleMenuRelation = new RoleMenuRelation();
+            roleMenuRelation.setRoleId(roleMenuRelationDTO.getRoleId());
+            roleMenuRelation.setMenuId(Long.parseLong(menuId));
+            return roleMenuRelation;
+        }).toList());
     }
 }

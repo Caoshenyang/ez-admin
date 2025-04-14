@@ -15,7 +15,7 @@
         t2.menu_icon,
         t2.description,
         t2.route_path,
-        t2.component,
+        t2.route_name,
         t2.component_path,
         t2.create_by,
         t2.update_by,

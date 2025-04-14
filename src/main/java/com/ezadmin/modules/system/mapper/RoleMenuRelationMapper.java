@@ -3,6 +3,8 @@ package com.ezadmin.modules.system.mapper;
 import com.ezadmin.modules.system.entity.RoleMenuRelation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 
 /**
  * <p>

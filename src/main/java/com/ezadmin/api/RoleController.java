@@ -4,6 +4,7 @@ import com.ezadmin.common.result.R;
 import com.ezadmin.common.result.page.PageQuery;
 import com.ezadmin.common.result.page.PageVO;
 import com.ezadmin.model.dto.RoleCreateDTO;
+import com.ezadmin.model.dto.RoleMenuRelationDTO;
 import com.ezadmin.model.dto.RoleUpdateDTO;
 import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.model.vo.RoleListVO;
@@ -65,5 +66,16 @@ public class RoleController {
         return R.ok(roleManagementService.getRoleById(roleId));
     }
 
+    @Operation(summary = "根据角色ID查询菜单权限", description = "根据角色ID查询菜单权限")
+    @GetMapping("/findMenusByRoleId/{roleId}")
+    public R<List<String>> findMenusByRoleId(@PathVariable Long roleId) {
+        return R.ok(roleManagementService.findMenusByRoleId(roleId));
+    }
 
+    @Operation(summary = "保存角色菜单权限", description = "保存角色菜单权限")
+    @PostMapping("/saveRoleMenus")
+    public R<String> saveRoleMenus(@RequestBody RoleMenuRelationDTO roleMenuRelationDTO) {
+        roleManagementService.saveRoleMenus(roleMenuRelationDTO);
+        return R.ok();
+    }
 }
