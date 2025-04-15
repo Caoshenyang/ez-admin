@@ -45,6 +45,18 @@ public class RoleUpdateDTO implements Serializable {
     private Integer roleSort;
 
     /**
+     * 数据权限
+     */
+    @Schema(description = "数据权限")
+    private String dataScope;
+
+    /**
+     * 数据权限值
+     */
+    @Schema(description = "数据权限值")
+    private String dataScopeValue;
+
+    /**
      * 备注
      */
     @Schema(description = "备注")

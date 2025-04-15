@@ -32,7 +32,7 @@ public class MenuController {
 
 
     @Operation(summary = "新增菜单", description = "新增菜单")
-    @PostMapping("/save")
+    @PostMapping("/create")
     public R<String> createMenu(@RequestBody MenuCreateDTO menuCreateDTO) {
         menuManagementService.createMenu(menuCreateDTO);
         return  R.ok();

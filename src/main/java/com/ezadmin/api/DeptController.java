@@ -31,7 +31,7 @@ public class DeptController {
 
 
     @Operation(summary = "新增")
-    @PostMapping("/save")
+    @PostMapping("/create")
     public R<String> createDept(@RequestBody DeptCreateDTO deptCreateDTO) {
         deptManagementService.createDept(deptCreateDTO);
         return R.ok();

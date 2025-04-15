@@ -33,7 +33,7 @@ public class RoleController {
     private final RoleManagementService roleManagementService;
 
     @Operation(summary = "添加角色", description = "添加角色")
-    @PostMapping("/save")
+    @PostMapping("/create")
     public R<String> createRole(@RequestBody RoleCreateDTO roleCreateDTO) {
         roleManagementService.createRole(roleCreateDTO);
         return R.ok();
@@ -48,9 +48,9 @@ public class RoleController {
 
     @Operation(summary = "删除角色", description = "根据ID删除角色")
     @Parameter(name = "roleId", description = "角色ID")
-    @DeleteMapping("/remove/{roleId}")
-    public R<String> removeRole(@PathVariable Long roleId) {
-        roleManagementService.removeRole(roleId);
+    @DeleteMapping("/delete/{roleId}")
+    public R<String> deleteRole(@PathVariable Long roleId) {
+        roleManagementService.deleteRole(roleId);
         return R.ok();
     }
 

@@ -58,7 +58,7 @@ public class RoleManagementService {
      * 删除角色
      * @param roleId 角色id
      */
-    public void removeRole(Long roleId) {
+    public void deleteRole(Long roleId) {
         // todo 1. 删除时判断角色是否被使用 2. 删除角色权限关联表数据
         roleService.removeById(roleId);
     }

@@ -26,8 +26,14 @@ public class RoleDetailVO implements Serializable {
     @Schema(description = "角色标识")
     private String roleLabel;
 
-    @Schema(description = "数据权限【1 本人 2 本部门  3 自定义 4 全部】")
+    @Schema(description = "排序")
+    private Integer roleSort;
+
+    @Schema(description = "数据权限【1 本人 2 本部门 3 本部门及以下  4 自定义 5 全部】")
     private Long dataScope;
+
+    @Schema(description = "数据权限值")
+    private String dataScopeValue;
 
     @Schema(description = "描述")
     private String description;

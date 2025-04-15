@@ -31,7 +31,7 @@ public class UserController {
     private final UserManagementService userManagementService;
 
     @Operation(summary = "新增用户")
-    @PostMapping("/save")
+    @PostMapping("/create")
     public R<String> createUser(@RequestBody UserCreateDTO userCreateDTO) {
         userManagementService.createUser(userCreateDTO);
         return R.ok();
