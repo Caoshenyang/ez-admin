@@ -88,7 +88,11 @@ public class DeptManagementService {
      * @return List<DeptTreeVO>
      */
     public List<DeptTreeVO> findDeptTree() {
-        return Optional.ofNullable(deptService.list())
+        // 选择部门数据 只筛选出启用的部门
+        LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<Dept>()
+                .orderByAsc(Dept::getDeptSort);
+
+        return Optional.ofNullable(deptService.list(queryWrapper))
                 .filter(CollectionUtils::isNotEmpty)
                 .map(MsDeptMapper.INSTANCE::dept2DeptTreeVOs)
                 .map(TreeBuilder::buildTree)
@@ -100,7 +104,7 @@ public class DeptManagementService {
         LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<Dept>()
                 .select(Dept::getDeptId, Dept::getDeptName, Dept::getParentId, Dept::getAncestors)
                 .eq(Dept::getStatus, 1)
-                .orderByAsc(Dept::getParentId, Dept::getDeptSort);
+                .orderByAsc(Dept::getDeptSort);
 
         return Optional.ofNullable(deptService.list(queryWrapper))
                 .filter(CollectionUtils::isNotEmpty)

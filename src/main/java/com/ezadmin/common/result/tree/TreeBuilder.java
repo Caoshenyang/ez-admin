@@ -1,6 +1,7 @@
 package com.ezadmin.common.result.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -28,7 +29,14 @@ public class TreeBuilder {
             return new ArrayList<>();
         }
         // 创建一个映射，用于存储每个节点的ID和对应的节点对象 k - nodeId, v - treeNode
-        Map<Long, T> nodeMap = dataList.stream().collect(Collectors.toMap(TreeNode::getNodeId, Function.identity()));
+        Map<Long, T> nodeMap = dataList.stream().collect(Collectors
+                .toMap(TreeNode::getNodeId,
+                        Function.identity(),
+                        (existing, replacement) -> existing,  // 合并函数，当键冲突时保留原有值
+                        LinkedHashMap::new // 指定使用LinkedHashMap
+                ));
+
+
         // 暂存当前数据集的根节点ID
         List<Long> roots = new ArrayList<>();
         // 构建树形结构
@@ -50,7 +58,7 @@ public class TreeBuilder {
 
         // 返回根节点列表
         return nodeMap.values().stream()
-            .filter(node -> roots.contains(node.getNodeId()))
-            .collect(Collectors.toList());
+                .filter(node -> roots.contains(node.getNodeId()))
+                .collect(Collectors.toList());
     }
 }
