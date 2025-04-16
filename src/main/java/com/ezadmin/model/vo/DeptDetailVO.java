@@ -1,6 +1,7 @@
 package com.ezadmin.model.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.ezadmin.common.annotation.SnowflakeId;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -21,6 +22,7 @@ public class DeptDetailVO implements Serializable {
     /**
      * 部门ID
      */
+    @SnowflakeId
     @Schema(description = "部门ID")
     private Long deptId;
 
@@ -31,6 +33,18 @@ public class DeptDetailVO implements Serializable {
     private String deptName;
 
     /**
+     * 部门排序
+     */
+    @Schema(description = "部门排序")
+    private Integer deptSort;
+
+    /**
+     * 部门状态 【0 停用 1 正常】
+     */
+    @Schema(description = "部门状态 【0 停用 1 正常】")
+    private Integer status;
+
+    /**
      * 祖级列表
      */
     @Schema(description = "祖级列表")
@@ -39,6 +53,7 @@ public class DeptDetailVO implements Serializable {
     /**
      * 父级菜单ID
      */
+    @SnowflakeId
     @Schema(description = "父级菜单ID")
     private Long parentId;
 

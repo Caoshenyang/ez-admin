@@ -32,6 +32,18 @@ public class DeptUpdateDTO implements Serializable {
     private String deptName;
 
     /**
+     * 部门排序
+     */
+    @Schema(description = "部门排序")
+    private Integer deptSort;
+
+    /**
+     * 部门状态 【0 停用 1 正常】
+     */
+    @Schema(description = "部门状态 【0 停用 1 正常】")
+    private Integer status;
+
+    /**
      * 祖级列表
      */
     @Schema(description = "祖级列表")

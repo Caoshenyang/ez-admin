@@ -36,7 +36,7 @@ public class RoleListVO implements Serializable {
     @Schema(description = "数据范围【1 仅本人数据权限 2 本部门数据权限 3 本部门及以下数据权限 4 自定义数据权限 5 全部数据权限】")
     private Integer dataScope;
 
-    @Schema(description = "角色状态【0 正常 1 停用】")
+    @Schema(description = "角色状态【0 停用 1 正常】")
     private Integer status;
 
 }

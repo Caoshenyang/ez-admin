@@ -57,9 +57,9 @@ public class Role implements Serializable {
     private Integer dataScope;
 
     /**
-     * 角色状态【0 正常 1 停用】
+     * 角色状态【0 停用 1 正常】
      */
-    @Schema(description = "角色状态【0 正常 1 停用】")
+    @Schema(description = "角色状态【0 停用 1 正常】")
     private Integer status;
 
     /**

@@ -72,5 +72,12 @@ public class DeptController {
         return R.ok(deptManagementService.findDeptTree());
     }
 
+    @Operation(summary = "选择部门列表")
+    @GetMapping(value = "/tree/select")
+    public R<List<DeptTreeVO>> findDeptTreeSelect() {
+        return R.ok(deptManagementService.findDeptTreeSelect());
+    }
+
+
 }
 

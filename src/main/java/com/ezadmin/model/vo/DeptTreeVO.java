@@ -1,5 +1,6 @@
 package com.ezadmin.model.vo;
 
+import com.ezadmin.common.annotation.SnowflakeId;
 import com.ezadmin.common.result.tree.TreeNode;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,6 +23,7 @@ public class DeptTreeVO extends TreeNode implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @SnowflakeId
     @Schema(description = "部门ID")
     private Long deptId;
 
@@ -31,8 +33,15 @@ public class DeptTreeVO extends TreeNode implements Serializable {
     @Schema(description = "祖级列表")
     private String ancestors;
 
+    @SnowflakeId
     @Schema(description = "父级菜单ID")
     private Long parentId;
+
+    @Schema(description = "部门排序")
+    private Integer deptSort;
+
+    @Schema(description = "部门状态 【0 停用 1 正常】")
+    private Integer status;
 
     @Schema(description = "描述")
     private String description;

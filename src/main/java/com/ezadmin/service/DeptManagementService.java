@@ -1,6 +1,8 @@
 package com.ezadmin.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.ezadmin.common.result.tree.TreeBuilder;
 import com.ezadmin.model.dto.DeptCreateDTO;
 import com.ezadmin.model.dto.DeptUpdateDTO;
@@ -30,6 +32,7 @@ public class DeptManagementService {
 
     /**
      * 部门创建
+     *
      * @param deptCreateDTO deptCreateDTO
      */
     public void createDept(DeptCreateDTO deptCreateDTO) {
@@ -40,6 +43,7 @@ public class DeptManagementService {
 
     /**
      * 部门更新
+     *
      * @param deptUpdateDTO deptUpdateDTO
      */
     public void updateDept(DeptUpdateDTO deptUpdateDTO) {
@@ -50,6 +54,7 @@ public class DeptManagementService {
 
     /**
      * 根据ID删除部门
+     *
      * @param deptId deptId
      */
     public void deleteDept(Long deptId) {
@@ -58,6 +63,7 @@ public class DeptManagementService {
 
     /**
      * 批量删除部门
+     *
      * @param deptIdList deptIdList
      */
     public void deleteBatchDept(List<Long> deptIdList) {
@@ -66,6 +72,7 @@ public class DeptManagementService {
 
     /**
      * 根据ID查询部门详情
+     *
      * @param deptId deptId
      * @return DeptDetailVO
      */
@@ -77,10 +84,25 @@ public class DeptManagementService {
 
     /**
      * 查询部门树
+     *
      * @return List<DeptTreeVO>
      */
     public List<DeptTreeVO> findDeptTree() {
         return Optional.ofNullable(deptService.list())
+                .filter(CollectionUtils::isNotEmpty)
+                .map(MsDeptMapper.INSTANCE::dept2DeptTreeVOs)
+                .map(TreeBuilder::buildTree)
+                .orElseGet(List::of);
+    }
+
+    public List<DeptTreeVO> findDeptTreeSelect() {
+        // 选择部门数据 只筛选出启用的部门
+        LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<Dept>()
+                .select(Dept::getDeptId, Dept::getDeptName, Dept::getParentId, Dept::getAncestors)
+                .eq(Dept::getStatus, 1)
+                .orderByAsc(Dept::getParentId, Dept::getDeptSort);
+
+        return Optional.ofNullable(deptService.list(queryWrapper))
                 .filter(CollectionUtils::isNotEmpty)
                 .map(MsDeptMapper.INSTANCE::dept2DeptTreeVOs)
                 .map(TreeBuilder::buildTree)

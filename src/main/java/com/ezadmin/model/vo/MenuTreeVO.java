@@ -96,9 +96,9 @@ public class MenuTreeVO extends TreeNode implements Serializable {
     private String componentPath;
 
     /**
-     * 菜单状态【0 正常 1 停用】
+     * 菜单状态【0 停用 1 正常】
      */
-    @Schema(description = "菜单状态【0 正常 1 停用】")
+    @Schema(description = "菜单状态【0 停用 1 正常】")
     private Integer status;
 
     @Schema(description = "更新时间")
