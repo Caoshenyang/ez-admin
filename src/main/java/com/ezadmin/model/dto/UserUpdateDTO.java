@@ -31,11 +31,6 @@ public class UserUpdateDTO implements Serializable {
     @Schema(description = "部门ID")
     private Long deptId;
 
-    /**
-     * 密码
-     */
-    @Schema(description = "密码")
-    private String password;
 
     /**
      * 用户昵称
@@ -56,9 +51,9 @@ public class UserUpdateDTO implements Serializable {
     private String phoneNumber;
 
     /**
-     * 性别【0 未知 1 男 2 女 3 其它】
+     * 性别【0 保密 1 男 2 女】
      */
-    @Schema(description = "性别【0 未知 1 男 2 女 3 其它】")
+    @Schema(description = "性别【0 保密 1 男 2 女】")
     private Integer gender;
 
     /**

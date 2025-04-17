@@ -44,7 +44,7 @@ public class UserListVO implements Serializable {
     @Schema(description = "用户手机号码")
     private String phoneNumber;
 
-    @Schema(description = "性别【0 未知 1 男 2 女 3 其它】")
+    @Schema(description = "性别【0 保密 1 男 2 女】")
     private Integer gender;
 
     @Schema(description = "用户状态【0 禁用 1 正常】")

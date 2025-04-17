@@ -160,7 +160,7 @@ CREATE TABLE `ez_admin_user`  (
   `nickname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户昵称',
   `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户邮箱',
   `phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户手机号码',
-  `gender` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别【0 未知 1 男 2 女 3 其它】',
+  `gender` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别【0 保密 1 男 2 女】',
   `avatar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户头像',
   `status` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户状态【0 禁用 1 正常】',
   `login_ip` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '最后登录IP',

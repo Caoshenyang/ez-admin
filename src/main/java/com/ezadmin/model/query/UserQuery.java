@@ -21,4 +21,7 @@ public class UserQuery implements Serializable {
 
     @Schema(description = "昵称")
     private String nickname;
+
+    @Schema(description = "部门")
+    private Long deptId;
 }

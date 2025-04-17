@@ -54,9 +54,9 @@ public class UserCreateDTO implements Serializable {
     private String phoneNumber;
 
     /**
-     * 性别【0 未知 1 男 2 女 3 其它】
+     * 性别【0 保密 1 男 2 女】
      */
-    @Schema(description = "性别【0 未知 1 男 2 女 3 其它】")
+    @Schema(description = "性别【0 保密 1 男 2 女】")
     private Integer gender;
 
     /**

@@ -13,5 +13,8 @@
         <if test="search.username != null and search.username != ''">
             and u.nickname like concat('%', #{search.nickname}, '%')
         </if>
+        <if test="search.deptId != null and search.deptId != ''">
+            and u.dept_id = #{search.deptId}
+        </if>
     </select>
 </mapper>
