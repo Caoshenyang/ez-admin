@@ -47,7 +47,7 @@ public class UserListVO implements Serializable {
     @Schema(description = "性别【0 未知 1 男 2 女 3 其它】")
     private Integer gender;
 
-    @Schema(description = "用户状态【0 正常 1 冻结】")
+    @Schema(description = "用户状态【0 禁用 1 正常】")
     private Integer status;
 
     @Schema(description = "创建时间")

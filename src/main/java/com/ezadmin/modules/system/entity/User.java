@@ -81,9 +81,9 @@ public class User implements Serializable {
     private String avatar;
 
     /**
-     * 用户状态【0 正常 1 冻结】
+     * 用户状态【0 禁用 1 正常】
      */
-    @Schema(description = "用户状态【0 正常 1 冻结】")
+    @Schema(description = "用户状态【0 禁用 1 正常】")
     private Integer status;
 
     /**
