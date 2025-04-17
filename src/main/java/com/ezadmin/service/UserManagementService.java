@@ -10,11 +10,18 @@ import com.ezadmin.model.dto.UserCreateDTO;
 import com.ezadmin.model.dto.UserUpdateDTO;
 import com.ezadmin.model.mpstruct.MsUserMapper;
 import com.ezadmin.model.query.UserQuery;
+import com.ezadmin.model.vo.RoleDetailVO;
+import com.ezadmin.model.vo.UserDetailVO;
 import com.ezadmin.model.vo.UserListVO;
+import com.ezadmin.modules.system.entity.Role;
 import com.ezadmin.modules.system.entity.User;
+import com.ezadmin.modules.system.service.IRoleService;
 import com.ezadmin.modules.system.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 类名: UserManagementService
@@ -28,7 +35,7 @@ import org.springframework.stereotype.Service;
 public class UserManagementService {
 
     private final IUserService userService;
-
+    private final IRoleService roleService;
 
     /**
      * 新增用户
@@ -64,15 +71,22 @@ public class UserManagementService {
 
     public PageVO<UserListVO> findPage(PageQuery<UserQuery> userQuery) {
         // 将查询对象 转换为 Mybatis Plus 的 Page 对象
-        Page<User> page = userQuery.toMpPage();
+        Page<UserListVO> page = userQuery.toMpPage();
         UserQuery search = userQuery.getSearch();
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>()
-                .eq(StrUtil.isNotBlank(search.getUsername()), User::getUsername, search.getUsername())
-                .or()
-                .like(StrUtil.isNotBlank(search.getNickname()), User::getNickname, search.getNickname());
         // 查询
-        userService.page(page, queryWrapper);
+        userService.findPage(page,search);
         // 将 Mybatis Plus 的 Page 对象 转换为 PageVO
         return PageVO.of(page, UserListVO.class);
+    }
+
+    public UserDetailVO findUserById(Long userId) {
+        User user = userService.getById(userId);
+        UserDetailVO userDetailVO = MsUserMapper.INSTANCE.user2UserDetailVO(user);
+        // 查询用户角色
+        List<Role> roles = roleService.selectRoleListByUserId(user.getUserId());
+        // 收集所有角色Id，并且转成字符串数组
+        List<String> roleIds = roles.stream().map(role -> String.valueOf(role.getRoleId())).toList();
+        userDetailVO.setRoleIds(roleIds);
+        return userDetailVO;
     }
 }

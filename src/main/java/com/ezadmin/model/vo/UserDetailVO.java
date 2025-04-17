@@ -5,38 +5,32 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
- * 类名: UserListVO
- * 功能描述: 用户列表VO对象
+ * 类名: UserDetailVO
+ * 功能描述: 用户详情
  *
  * @author shenyang
- * @since 2025/3/19 16:25
+ * @since 2025/4/17 11:23
  */
 @Data
-public class UserListVO implements Serializable {
+public class UserDetailVO implements Serializable {
     private final static long serialVersionUID = 1L;
 
     @SnowflakeId
-    @Schema(description = "主键ID")
+    @Schema(description = "用户ID")
     private Long userId;
 
     @SnowflakeId
     @Schema(description = "部门ID")
     private Long deptId;
 
-    @Schema(description = "部门名称")
-    private String deptName;
+    @Schema(description = "角色ID")
+    private List<String> roleIds;
 
-    @Schema(description = "用户名")
-    private String username;
-
-    @Schema(description = "昵称")
+    @Schema(description = "用户昵称")
     private String nickname;
-
-    @Schema(description = "头像")
-    private String avatar;
 
     @Schema(description = "用户邮箱")
     private String email;
@@ -47,10 +41,10 @@ public class UserListVO implements Serializable {
     @Schema(description = "性别【0 未知 1 男 2 女 3 其它】")
     private Integer gender;
 
-    @Schema(description = "用户状态【0 正常 1 冻结】")
-    private Integer status;
+    @Schema(description = "用户头像")
+    private String avatar;
 
-    @Schema(description = "创建时间")
-    private LocalDateTime createTime;
+    @Schema(description = "状态")
+    private Integer status;
 
 }

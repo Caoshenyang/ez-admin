@@ -6,6 +6,8 @@ import com.ezadmin.common.result.page.PageVO;
 import com.ezadmin.model.dto.UserCreateDTO;
 import com.ezadmin.model.dto.UserUpdateDTO;
 import com.ezadmin.model.query.UserQuery;
+import com.ezadmin.model.vo.RoleDetailVO;
+import com.ezadmin.model.vo.UserDetailVO;
 import com.ezadmin.model.vo.UserListVO;
 import com.ezadmin.modules.system.service.IUserService;
 import com.ezadmin.service.UserManagementService;
@@ -13,6 +15,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -49,6 +53,13 @@ public class UserController {
     public R<String> deleteUser(@PathVariable("userId") Long userId) {
         userManagementService.deleteUser(userId);
         return R.ok();
+    }
+
+
+    @Operation(summary = "根据ID查询用户", description = "根据ID查询用户")
+    @GetMapping("/getUserById/{userId}")
+    public R<UserDetailVO> findUserById(@PathVariable Long userId) {
+        return R.ok(userManagementService.findUserById(userId));
     }
 
     @Operation(summary = "分页查询")

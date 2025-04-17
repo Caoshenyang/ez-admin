@@ -46,6 +46,7 @@ public class RoleManagementService {
 
     /**
      * 更新角色
+     *
      * @param roleUpdateDTO 角色更新参数
      */
     public void updateRole(RoleUpdateDTO roleUpdateDTO) {
@@ -56,6 +57,7 @@ public class RoleManagementService {
 
     /**
      * 删除角色
+     *
      * @param roleId 角色id
      */
     public void deleteRole(Long roleId) {
@@ -65,6 +67,7 @@ public class RoleManagementService {
 
     /**
      * 菜单-分页查询
+     *
      * @param query query
      * @return PageVO<RoleListVO>
      */
@@ -76,6 +79,7 @@ public class RoleManagementService {
 
     /**
      * 根据角色id加载菜单
+     *
      * @param roleId roleId
      * @return RoleDetailVO
      */
@@ -99,4 +103,9 @@ public class RoleManagementService {
             return roleMenuRelation;
         }).toList());
     }
+
+    public List<RoleListVO> getRoleList() {
+        List<Role> roleList = roleService.getRoleList();
+        return MsRoleMapper.INSTANCE.role2RoleListVOs(roleList);
+     }
 }

@@ -1,6 +1,9 @@
 package com.ezadmin.modules.system.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ezadmin.model.dto.UserCreateDTO;
+import com.ezadmin.model.query.UserQuery;
+import com.ezadmin.model.vo.UserListVO;
 import com.ezadmin.modules.system.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -27,4 +30,6 @@ public interface IUserService extends IService<User> {
      * @param username 用户名
      */
     void checkUsernameExists(String username);
+
+    void findPage(Page<UserListVO> page, UserQuery search);
 }

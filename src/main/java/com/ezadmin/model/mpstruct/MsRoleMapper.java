@@ -3,6 +3,7 @@ package com.ezadmin.model.mpstruct;
 import com.ezadmin.model.dto.RoleCreateDTO;
 import com.ezadmin.model.dto.RoleUpdateDTO;
 import com.ezadmin.model.vo.RoleDetailVO;
+import com.ezadmin.model.vo.RoleListVO;
 import com.ezadmin.modules.system.entity.Role;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -26,4 +27,6 @@ public interface MsRoleMapper {
     Role roleUpdateDTO2Role(RoleUpdateDTO roleUpdateDTO);
 
     RoleDetailVO role2RoleDetailVO(Role role);
+
+    List<RoleListVO> role2RoleListVOs(List<Role> roleList);
 }

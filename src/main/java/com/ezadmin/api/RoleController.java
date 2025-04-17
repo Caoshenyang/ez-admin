@@ -8,6 +8,7 @@ import com.ezadmin.model.dto.RoleMenuRelationDTO;
 import com.ezadmin.model.dto.RoleUpdateDTO;
 import com.ezadmin.model.vo.RoleDetailVO;
 import com.ezadmin.model.vo.RoleListVO;
+import com.ezadmin.model.vo.UserListVO;
 import com.ezadmin.service.RoleManagementService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -58,6 +59,13 @@ public class RoleController {
     @PostMapping("/page")
     public R<PageVO<RoleListVO>> findPage(@RequestBody PageQuery<?> query) {
         return R.ok(roleManagementService.findPage(query));
+    }
+
+
+    @Operation(summary = "角色下拉选择数据")
+    @GetMapping("/list")
+    public R<List<RoleListVO>> getRoleList() {
+        return R.ok(roleManagementService.getRoleList());
     }
 
     @Operation(summary = "根据ID查询角色", description = "根据ID查询角色")

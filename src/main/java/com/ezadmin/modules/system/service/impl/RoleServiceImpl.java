@@ -1,5 +1,6 @@
 package com.ezadmin.modules.system.service.impl;
 
+import com.ezadmin.model.vo.RoleListVO;
 import com.ezadmin.modules.system.entity.Role;
 import com.ezadmin.modules.system.mapper.RoleMapper;
 import com.ezadmin.modules.system.service.IRoleService;
@@ -27,5 +28,10 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
     @Override
     public List<Role> loadAllRoles() {
         return lambdaQuery().list();
+    }
+
+    @Override
+    public List<Role> getRoleList() {
+        return lambdaQuery().eq(Role::getStatus,1).list();
     }
 }

@@ -1,10 +1,13 @@
 package com.ezadmin.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ezadmin.common.exception.ExceptionEnum;
 import com.ezadmin.common.exception.EzAdminException;
 import com.ezadmin.common.utils.PasswordEncoderUtil;
 import com.ezadmin.model.dto.UserCreateDTO;
 import com.ezadmin.model.mpstruct.MsUserMapper;
+import com.ezadmin.model.query.UserQuery;
+import com.ezadmin.model.vo.UserListVO;
 import com.ezadmin.modules.system.entity.User;
 import com.ezadmin.modules.system.mapper.UserMapper;
 import com.ezadmin.modules.system.service.IUserService;
@@ -40,5 +43,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             throw new EzAdminException(ExceptionEnum.USERNAME_EXISTS);
         }
     }
+
+    @Override
+    public void findPage(Page<UserListVO> page, UserQuery search) {
+        baseMapper.findPage(page, search);
+    }
+
 
 }
