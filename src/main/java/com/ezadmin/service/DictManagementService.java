@@ -10,6 +10,7 @@ import com.ezadmin.model.dto.DictDataUpdateDTO;
 import com.ezadmin.model.dto.DictTypeCreateDTO;
 import com.ezadmin.model.dto.DictTypeUpdateDTO;
 import com.ezadmin.model.mpstruct.MsDictMapper;
+import com.ezadmin.model.vo.DictDataDetailVO;
 import com.ezadmin.model.vo.DictDataListVO;
 import com.ezadmin.model.vo.DictTypeDetailVO;
 import com.ezadmin.model.vo.DictTypeListVO;
@@ -78,5 +79,9 @@ public class DictManagementService {
 
     public void deleteDictData(Long dictDataId) {
         dictDataService.removeById(dictDataId);
+    }
+
+    public DictDataDetailVO getDictDataById(Long dictDataId) {
+        return MsDictMapper.INSTANCE.dictData2DictDataDetailVO(dictDataService.getById(dictDataId));
     }
 }

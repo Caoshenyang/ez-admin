@@ -1,10 +1,7 @@
 package com.ezadmin.model.mpstruct;
 
 import com.ezadmin.model.dto.*;
-import com.ezadmin.model.vo.DictDataListVO;
-import com.ezadmin.model.vo.DictTypeDetailVO;
-import com.ezadmin.model.vo.RoleDetailVO;
-import com.ezadmin.model.vo.RoleListVO;
+import com.ezadmin.model.vo.*;
 import com.ezadmin.modules.system.entity.DictData;
 import com.ezadmin.modules.system.entity.DictType;
 import com.ezadmin.modules.system.entity.Role;
@@ -37,4 +34,6 @@ public interface MsDictMapper {
     DictData dictDataCreateDTO2DictData(DictDataCreateDTO dictDataCreateDTO);
 
     DictData dictDataUpdateDTO2DictData(DictDataUpdateDTO dictDataUpdateDTO);
+
+    DictDataDetailVO dictData2DictDataDetailVO(DictData byId);
 }

@@ -7,6 +7,7 @@ import com.ezadmin.model.dto.DictDataCreateDTO;
 import com.ezadmin.model.dto.DictDataUpdateDTO;
 import com.ezadmin.model.dto.DictTypeCreateDTO;
 import com.ezadmin.model.dto.DictTypeUpdateDTO;
+import com.ezadmin.model.vo.DictDataDetailVO;
 import com.ezadmin.model.vo.DictDataListVO;
 import com.ezadmin.model.vo.DictTypeDetailVO;
 import com.ezadmin.model.vo.DictTypeListVO;
@@ -70,7 +71,7 @@ public class DictController {
     }
 
     @Operation(summary = "根据字典类型查询字典数据")
-    @GetMapping("/data/{dictId}")
+    @GetMapping("/data/list/{dictId}")
     public R<List<DictDataListVO>> getDictDataByDictId(@PathVariable Long dictId) {
         List<DictDataListVO> dictDataListVOList = dictManagementService.getDictDataByDictId(dictId);
         return R.ok(dictDataListVOList);
@@ -95,6 +96,13 @@ public class DictController {
     public R<String> deleteDictData(@PathVariable Long dictDataId) {
         dictManagementService.deleteDictData(dictDataId);
         return R.ok();
+    }
+
+    @Operation(summary = "根据ID查询字典数据")
+    @GetMapping("/data/{dictDataId}")
+    public R<DictDataDetailVO> getDictDataById(@PathVariable Long dictDataId) {
+        DictDataDetailVO dictDataById = dictManagementService.getDictDataById(dictDataId);
+        return R.ok(dictDataById);
     }
 
 }
