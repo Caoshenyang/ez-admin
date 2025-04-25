@@ -2,11 +2,14 @@ package com.ezadmin.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.ezadmin.common.result.tree.TreeBuilder;
 import com.ezadmin.model.dto.DeptCreateDTO;
 import com.ezadmin.model.dto.DeptUpdateDTO;
 import com.ezadmin.model.mpstruct.MsDeptMapper;
+import com.ezadmin.model.query.DeptQuery;
 import com.ezadmin.model.vo.DeptDetailVO;
 import com.ezadmin.model.vo.DeptTreeVO;
 import com.ezadmin.modules.system.entity.Dept;
@@ -87,10 +90,21 @@ public class DeptManagementService {
      *
      * @return List<DeptTreeVO>
      */
-    public List<DeptTreeVO> findDeptTree() {
+    public List<DeptTreeVO> findDeptTree(DeptQuery deptQuery) {
         // 选择部门数据 只筛选出启用的部门
         LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<Dept>()
                 .orderByAsc(Dept::getDeptSort);
+        // 直接使用函数式引用构建查询
+        if (StringUtils.isNotBlank(deptQuery.getKeyword())) {
+            queryWrapper.and(wrapper -> {
+                for (SFunction<Dept, String> field : deptQuery.getKeywordSearchFields()) {
+                    wrapper.or().like(field, deptQuery.getKeyword());
+                }
+            });
+        }
+        // 高级查询
+
+
 
         return Optional.ofNullable(deptService.list(queryWrapper))
                 .filter(CollectionUtils::isNotEmpty)

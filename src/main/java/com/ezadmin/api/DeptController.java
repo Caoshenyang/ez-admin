@@ -3,6 +3,7 @@ package com.ezadmin.api;
 import com.ezadmin.common.result.R;
 import com.ezadmin.model.dto.DeptCreateDTO;
 import com.ezadmin.model.dto.DeptUpdateDTO;
+import com.ezadmin.model.query.DeptQuery;
 import com.ezadmin.model.vo.DeptDetailVO;
 import com.ezadmin.model.vo.DeptTreeVO;
 import com.ezadmin.service.DeptManagementService;
@@ -68,8 +69,8 @@ public class DeptController {
 
     @Operation(summary = "查询部门列表（树形）")
     @PostMapping(value = "/tree")
-    public R<List<DeptTreeVO>> findDeptTree() {
-        return R.ok(deptManagementService.findDeptTree());
+    public R<List<DeptTreeVO>> findDeptTree(@RequestBody DeptQuery deptQuery) {
+        return R.ok(deptManagementService.findDeptTree(deptQuery));
     }
 
     @Operation(summary = "选择部门列表")
