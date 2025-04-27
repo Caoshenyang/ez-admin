@@ -69,7 +69,7 @@ public class DeptManagementService {
      *
      * @param deptIdList deptIdList
      */
-    public void deleteBatchDept(List<Long> deptIdList) {
+    public void deleteBatchDept(List<String> deptIdList) {
         deptService.removeBatchByIds(deptIdList);
     }
 
@@ -91,22 +91,11 @@ public class DeptManagementService {
      * @return List<DeptTreeVO>
      */
     public List<DeptTreeVO> findDeptTree(DeptQuery deptQuery) {
-        // 选择部门数据 只筛选出启用的部门
-        LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<Dept>()
-                .orderByAsc(Dept::getDeptSort);
-        // 直接使用函数式引用构建查询
-        if (StringUtils.isNotBlank(deptQuery.getKeyword())) {
-            queryWrapper.and(wrapper -> {
-                for (SFunction<Dept, String> field : deptQuery.getKeywordSearchFields()) {
-                    wrapper.or().like(field, deptQuery.getKeyword());
-                }
-            });
-        }
-        // 高级查询
 
+        LambdaQueryWrapper<Dept> deptLambdaQueryWrapper = deptQuery.buildWrapper();
+        deptLambdaQueryWrapper.orderByAsc(Dept::getDeptSort);
 
-
-        return Optional.ofNullable(deptService.list(queryWrapper))
+        return Optional.ofNullable(deptService.list(deptLambdaQueryWrapper))
                 .filter(CollectionUtils::isNotEmpty)
                 .map(MsDeptMapper.INSTANCE::dept2DeptTreeVOs)
                 .map(TreeBuilder::buildTree)

@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 类名: DeptQuery
@@ -23,13 +22,12 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 public class DeptQuery extends BaseQuery<Dept> implements Serializable {
 
-    @Schema(description = "部门名称")
-    private String deptName;
-
 
     @Override
     public List<SFunction<Dept, String>> getKeywordSearchFields() {
-        // 直接指定哪些字段参与模糊查询
-        return Arrays.asList(Dept::getDeptName, Dept::getDescription);
+        return Arrays.asList(
+                Dept::getDeptName,
+                Dept::getDescription
+        );
     }
 }

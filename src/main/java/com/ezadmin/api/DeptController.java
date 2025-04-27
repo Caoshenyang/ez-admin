@@ -55,7 +55,7 @@ public class DeptController {
 
     @Operation(summary = "批量删除", description = "批量删除")
     @DeleteMapping("/delete/batch")
-    public R<String> deleteBatchDept(@RequestBody List<Long> deptIdList) {
+    public R<String> deleteBatchDept(@RequestBody List<String> deptIdList) {
         deptManagementService.deleteBatchDept(deptIdList);
         return R.ok();
     }
