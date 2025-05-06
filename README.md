@@ -26,7 +26,6 @@ EZ 取自 “easy” 谐音，体现系统简单易用的特点，这也是开�
 | **数据库连接池**| HikariCP              | 5.x        | 高性能的 JDBC 连接池，Spring Boot 默认集成。                         |
 | **API 文档**   | Knife4j               | 4.5.0        | Swagger 的增强工具，生成美观的 API 文档。                            |
 | **JSON 处理**  | Jackson               | 2.14.x     | 高性能的 JSON 处理库，Spring Boot 默认集成。                         |
-| **日志框架**   | Logback               | 1.4.x      | 高性能的日志框架，Spring Boot 默认集成。                             |
 | **构建工具**   | Maven                 | 3.x        | 项目依赖管理和构建工具。                                             |
 | **前端模板引擎**| Thymeleaf             | 3.x        | 适用于 Web 开发的模板引擎，支持 HTML5。                              |
 | **缓存**       | Redis                 | 7.x        | 高性能的缓存数据库，用于会话管理、数据缓存等场景。                   |
