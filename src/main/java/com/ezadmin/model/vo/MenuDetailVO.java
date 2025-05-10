@@ -40,12 +40,6 @@ public class MenuDetailVO implements Serializable {
     private String menuIcon;
 
     /**
-     * 菜单标识
-     */
-    @Schema(description = "菜单标识")
-    private String menuLabel;
-
-    /**
      * 父级菜单ID
      */
     @SnowflakeId
@@ -94,4 +88,22 @@ public class MenuDetailVO implements Serializable {
     @Schema(description = "菜单状态【0 停用 1 正常】")
     private Integer status;
 
+
+    /**
+     * 是否显示【0 否 1 是】
+     */
+    @Schema(description = "是否显示【0 否 1 是】")
+    private Integer visible;
+
+    /**
+     * 触发事件名称【当为类型为按钮时】
+     */
+    @Schema(description = "触发事件名称【当为类型为按钮时】")
+    private String buttonEvent;
+
+    /**
+     * 按钮样式【'primary' | 'success' | 'warning' | 'danger' | 'info'】
+     */
+    @Schema(description = "按钮样式【'primary' | 'success' | 'warning' | 'danger' | 'info'】")
+    private String buttonStyle;
 }

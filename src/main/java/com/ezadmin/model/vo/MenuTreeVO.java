@@ -47,12 +47,6 @@ public class MenuTreeVO extends TreeNode implements Serializable {
     private String menuIcon;
 
     /**
-     * 菜单标识
-     */
-    @Schema(description = "菜单标识")
-    private String menuLabel;
-
-    /**
      * 父级菜单ID
      */
     @SnowflakeId
@@ -103,6 +97,15 @@ public class MenuTreeVO extends TreeNode implements Serializable {
 
     @Schema(description = "更新时间")
     private LocalDateTime updateTime;
+
+    @Schema(description = "是否显示【0 否 1 是】")
+    private Integer visible;
+
+    @Schema(description = "触发事件名称【当为类型为按钮时】")
+    private String buttonEvent;
+
+    @Schema(description = "按钮样式【'primary' | 'success' | 'warning' | 'danger' | 'info'】")
+    private String buttonStyle;
 
     @JsonIgnore
     @Override

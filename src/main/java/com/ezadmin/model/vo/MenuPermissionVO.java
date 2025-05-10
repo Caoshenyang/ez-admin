@@ -30,9 +30,6 @@ public class MenuPermissionVO implements Serializable {
     @Schema(description = "菜单名称")
     private String menuName;
 
-    @Schema(description = "菜单标识")
-    private String menuLabel;
-
     @Schema(description = "菜单图标")
     private String menuIcon;
 
@@ -61,6 +58,13 @@ public class MenuPermissionVO implements Serializable {
     @Schema(description = "描述")
     private String description;
 
+    @Schema(description = "是否显示【0 否 1 是】")
+    private Integer visible;
 
+    @Schema(description = "触发事件名称【当为类型为按钮时】")
+    private String buttonEvent;
+
+    @Schema(description = "按钮样式【'primary' | 'success' | 'warning' | 'danger' | 'info'】")
+    private String buttonStyle;
 
 }

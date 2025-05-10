@@ -5,22 +5,7 @@
     <select id="loadMenuPermByRoleIds" resultType="com.ezadmin.model.vo.MenuPermissionVO">
         SELECT
         t1.role_id,
-        t2.menu_id,
-        t2.menu_name,
-        t2.menu_perm,
-        t2.menu_label,
-        t2.parent_id,
-        t2.menu_type,
-        t2.menu_sort,
-        t2.menu_icon,
-        t2.description,
-        t2.route_path,
-        t2.route_name,
-        t2.component_path,
-        t2.create_by,
-        t2.update_by,
-        t2.create_time,
-        t2.update_time
+        t2.*
         FROM
         ez_admin_role_menu_relation AS t1
         INNER JOIN ez_admin_menu AS t2 ON t1.menu_id = t2.menu_id
